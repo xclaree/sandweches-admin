@@ -7,18 +7,9 @@
   font-family: "Inter";
 }
 
-.home,
-.product {
-  display: flex;
-  height: 100vh;
-  width: 100%;
-  margin-left: auto;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  font-weight: 600;
-  background-color: #FFF6E3;
-  color: #000;
+.home h1 {
+  justify-items: left;
+  text-align: left;
 }
 
 /* Navbar CSS */
@@ -34,6 +25,8 @@
 }
 
 .nav-menu {
+  display: flex;
+  overflow: auto;
   background-color: #FFDE98;
   width: 30vh;
   height: 100vh;
@@ -74,6 +67,12 @@
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.299));
 }
 
+.nav-text a.active {
+  background-color: #FFE8B7;
+  border-radius: 80px;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.299));
+}
+
 .nav-menu-items {
   width: 100%;
   margin-top: 20px;
@@ -92,4 +91,19 @@
 
 span {
   margin-left: 16px;
+}
+
+.home,
+.product {
+  display: flex;
+  position: relative;
+  height: 100vh;
+  width: 90%;
+  margin-left: auto;
+  align-items: left;
+  justify-content: left;
+  font-size: 1.4rem;
+  font-weight: 600;
+  background-color: #FFF6E3;
+  color: #000;
 }

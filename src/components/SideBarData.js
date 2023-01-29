@@ -10,34 +10,34 @@ export const SideBarData = [
         title: "Home",
         path: "/",
         icon: <AiIcons.AiFillHome />,
-        cName: "nav-text",
+        cName: "nav-text a",
 
     },
     {
-        title: "Product",
+        title: "Prodotti",
         path: "/product",
         icon: <MdIcons.MdLocalGroceryStore />,
-        cName: "nav-text",
+        cName: "nav-text a",
 
     },
     {
-        title: "Ingredient",
+        title: "Ingredienti",
         path: "/ingredient",
         icon: <MdIcons.MdFastfood />,
-        cName: "nav-text",
+        cName: "nav-text a",
 
     },
     {
-        title: "Offer",
+        title: "Offerte",
         path: "/offer",
         icon: <FaIcons.FaPercent />,
-        cName: "nav-text",
+        cName: "nav-text a",
 
     },
     {
-        title: "Profile",
+        title: "Profilo",
         path: "/profile",
         icon: <CgIcons.CgOptions />,
-        cName: "nav-text",
+        cName: "nav-text a",
     }
 ];

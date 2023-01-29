@@ -18,7 +18,8 @@ import './App.css';
 const AppLayout = () => (
   <>
   <Outlet />
-  <NavBar />
+   <NavBar />
+ 
   </>
 );
 
