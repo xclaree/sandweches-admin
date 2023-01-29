@@ -17,9 +17,9 @@ import './App.css';
 
 const AppLayout = () => (
   <>
-  <Outlet />
-   <NavBar />
- 
+    <Outlet />
+    <NavBar />
+
   </>
 );
 
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
     ],
 
   },
-  
+
 ]);
 
 createRoot(document.getElementById("root")).render(

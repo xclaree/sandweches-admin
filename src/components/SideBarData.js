@@ -9,35 +9,35 @@ export const SideBarData = [
     {
         title: "Home",
         path: "/",
-        icon: <AiIcons.AiFillHome />,
+        icon: <AiIcons.AiFillHome size="25px"/>,
         cName: "nav-text a",
 
     },
     {
         title: "Prodotti",
         path: "/product",
-        icon: <MdIcons.MdLocalGroceryStore />,
+        icon: <MdIcons.MdLocalGroceryStore size="25px"/>,
         cName: "nav-text a",
 
     },
     {
         title: "Ingredienti",
         path: "/ingredient",
-        icon: <MdIcons.MdFastfood />,
+        icon: <MdIcons.MdFastfood size="25px"/>,
         cName: "nav-text a",
 
     },
     {
         title: "Offerte",
         path: "/offer",
-        icon: <FaIcons.FaPercent />,
+        icon: <FaIcons.FaPercent size="25px"/>,
         cName: "nav-text a",
 
     },
     {
         title: "Profilo",
         path: "/profile",
-        icon: <CgIcons.CgOptions />,
+        icon: <CgIcons.CgOptions size="25px"/>,
         cName: "nav-text a",
     }
 ];
