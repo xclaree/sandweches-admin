@@ -90,7 +90,7 @@
 }
 
 span {
-  margin-left: 30px;
+  margin-left: 25px;
 }
 
 .home,
@@ -107,4 +107,28 @@ span {
   background-color: #FFF6E3;
   color: #000;
   padding: 60px 20px 60px 150px;
+}
+
+.order-list-text {
+  list-style: none;
+  padding: 60px 20px 60px 150px;
+  display: flex;
+  font-weight: 300;
+  align-items: center;
+  padding: 0px 0px 8px 16px;
+  height: 60px;
+}
+
+.order-list-toggle {
+  list-style: none;
+  flex-direction: column;
+  display: inline;
+}
+
+.order-list-toggle span{
+  margin-left: 80px;
+}
+
+.order-list-text span {
+  margin-left: 80px;
 }

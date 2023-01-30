@@ -4,7 +4,7 @@ import * as FaIcons from 'react-icons/fa';
 import * as MdIcons from 'react-icons/md';
 import * as CgIcons from 'react-icons/cg';
 
-export const SideBarData = [
+export const NavBarData = [
     
     {
         title: "Home",

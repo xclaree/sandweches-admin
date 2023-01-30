@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { SideBarData } from './SideBarData';
+import { NavBarData } from './NavBarData';
 import '../App.css';
 import { IconContext } from "react-icons";
 import logo from './logo.png';
@@ -18,7 +18,7 @@ function NavBar() {
                             </Link>
 
                         </li>
-                        {SideBarData.map((item, index) => {
+                        {NavBarData.map((item, index) => {
                             return (
                                 <div>
                                     <li key={index} className={item.cName}>
