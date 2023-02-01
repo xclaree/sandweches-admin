@@ -4,11 +4,17 @@ import Order from "../components/Order";
 
 function Home(){
     return(
-        <div className="home">
+        <>
+        <div className="home" >
+            <div >
             <h1>Elenco Ordini</h1>
-            {/* <Order /> */}
-            
+            </div>
+            <div className="order-list">
+            <Order />
+            </div>
         </div>
+        
+        </>
     )
 }
 
