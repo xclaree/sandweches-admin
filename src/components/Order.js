@@ -16,23 +16,15 @@ function Order() {
             <IconContext.Provider>
                 <TableContainer>
                     <Table >
-                        <TableHead>
-                            <TableRow>
-                                <TableCell align="left" style={{ fontWeight: '600' }}>Stato</TableCell>
-                                <TableCell align="left" style={{ fontWeight: '600' }}>Destinatario</TableCell>
-                                <TableCell align="left" style={{ fontWeight: '600' }}>Totale</TableCell>
-                                <TableCell align="left" style={{ fontWeight: '600' }}>Pickup</TableCell>
-                                <TableCell align="left" style={{ fontWeight: '600' }}>Orario</TableCell>
-                            </TableRow>
-                        </TableHead>
+                        
                         <TableBody>
                             {OrderData.map((item, index) => (
 
-                                <TableRow className={item.cName}
+                                <TableRow
                                     key={index}
                                 // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
-                                    <TableCell lign="left">{item.stringOrderStatus} </TableCell>
+                                    <TableCell align="left">{item.stringOrderStatus} </TableCell>
                                     <TableCell align="left">{item.customer}</TableCell>
                                     <TableCell align="left">{item.total}</TableCell>
                                     <TableCell align="left">{item.pickup}</TableCell>

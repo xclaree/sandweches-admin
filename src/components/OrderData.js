@@ -28,7 +28,6 @@ export const OrderData = [   //sarà il risultato della API
         total: "$20",
         pickup: "Settore A itis",
         break: "9:30",
-        cName: "order-list",
 
     },
     {
@@ -38,7 +37,6 @@ export const OrderData = [   //sarà il risultato della API
         total: "$20",
         pickup: "Settore A itis",
         break: "9:30",
-        cName: "order-list",
 
     },
     {
@@ -48,7 +46,6 @@ export const OrderData = [   //sarà il risultato della API
         total: "$20",
         pickup: "Settore A itis",
         break: "9:30",
-        cName: "order-list",
 
     },
     {
@@ -58,7 +55,6 @@ export const OrderData = [   //sarà il risultato della API
         total: "$20",
         pickup: "Settore A itis",
         break: "9:30",
-        cName: "order-list",
 
     },
     {

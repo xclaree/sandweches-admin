@@ -1,19 +1,24 @@
 import React from "react";
 import '../App.css';
 import Order from "../components/Order";
+import OrderHead from "../components/OrderHead";
 
-function Home(){
-    return(
+function Home() {
+    return (
         <>
-        <div className="home" >
-            <div >
-            <h1>Elenco Ordini</h1>
+            <div className="home" >
+                <div>
+                    <h1>Elenco Ordini</h1>
+                </div>
+                <div className="order-list">
+                    <OrderHead />
+                    <div className="order-list-items">
+                        <Order />
+                    </div>
+
+                </div>
             </div>
-            <div className="order-list">
-            <Order />
-            </div>
-        </div>
-        
+
         </>
     )
 }

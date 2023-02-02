@@ -12,7 +12,6 @@
   text-align: left;
 }
 
-/* Navbar CSS */
 
 .menu-bars {
   margin-left: 2rem;
@@ -115,6 +114,29 @@ span {
   position: sticky;
   padding-top: 100px;
   max-width: 90%;
+}
+
+.order-list-items {
+  max-height: 50vh;
+  overflow-y: scroll;
+  border-collapse: separate;
+  border-spacing: 0px;
+}
+
+
+
+.order-list-items::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+  background-color: #FFDE98;
+  border-radius: 600px;
+}
+
+.order-list-items::-webkit-scrollbar-thumb {
+  width: 10px;
+  height: 8px;
+  background-color: #f7c861;
+  border-radius: 600px;
 }
 
 .order-list-text {
