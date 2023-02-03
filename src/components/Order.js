@@ -8,15 +8,26 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { IconButton } from "@mui/material";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 function Order() {
 
     return (
         <>
             <IconContext.Provider>
-                <TableContainer>
-                    <Table >
-                        
+                <TableContainer sx={{ maxHeight: 440 }} >
+                    <Table stickyHeader aria-label="sticky table" style={{ background: "#FFF6E3" }}>
+                        <TableHead >
+                            <TableRow style={{ fontWeight: '600', background: "#FFF6E3" }}>
+                                <TableCell align="left" style={{ fontWeight: '600', background: "#FFF6E3" }}>Stato</TableCell>
+                                <TableCell align="left" style={{ fontWeight: '600', background: "#FFF6E3" }}>Destinatario</TableCell>
+                                <TableCell align="left" style={{ fontWeight: '600', background: "#FFF6E3" }}>Totale</TableCell>
+                                <TableCell align="left" style={{ fontWeight: '600', background: "#FFF6E3" }}>Pickup</TableCell>
+                                <TableCell align="left" style={{ fontWeight: '600', background: "#FFF6E3" }}>Orario</TableCell>
+                                <TableCell style={{ fontWeight: '600', background: "#FFF6E3" }} />
+                            </TableRow>
+                        </TableHead>
                         <TableBody>
                             {OrderData.map((item, index) => (
 
@@ -29,6 +40,11 @@ function Order() {
                                     <TableCell align="left">{item.total}</TableCell>
                                     <TableCell align="left">{item.pickup}</TableCell>
                                     <TableCell align="left">{item.break}</TableCell>
+                                    <TableCell>
+                                        <IconButton>
+                                            <MoreVertIcon />
+                                        </IconButton>
+                                    </TableCell>
 
                                 </TableRow>
                             )
