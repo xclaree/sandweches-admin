@@ -1,7 +1,6 @@
 import React from "react";
 import '../App.css';
 import Order from "../components/Order";
-import OrderHead from "../components/OrderHead";
 
 function Home() {
     return (
@@ -11,7 +10,6 @@ function Home() {
                     <h1>Elenco Ordini</h1>
                 </div>
                 <div className="order-list">
-                    {/* <OrderHead /> */}
                     <div className="order-list-items">
                         <Order />
                     </div>
