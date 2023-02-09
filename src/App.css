@@ -110,7 +110,7 @@ span {
 .order-list {
   position: sticky;
   padding-top: 100px;
-  max-width: 90%;
+  max-width: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -149,12 +149,4 @@ span {
 
 .order-list-text span {
   margin-left: 80px;
-}
-
-.order-list-tablehead{
-  size: 0px;
-  font-weight: 900;
-  list-style: none;
-  padding: 60px 20px 60px 150px;
-  display: flex;
 }
