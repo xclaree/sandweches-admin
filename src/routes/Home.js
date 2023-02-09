@@ -10,8 +10,8 @@ function Home() {
                     <h1>Elenco Ordini</h1>
                 </div>
                 <div className="order-list">
-                    <div className="order-list-items">
-                        <Order />
+                    <div>
+                        <Order /> 
                     </div>
 
                 </div>
