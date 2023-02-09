@@ -78,7 +78,6 @@ function Order() {
               {OrderData.map((item, index) => (
                 <TableRow
                   key={index}
-                  // sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell align="left">{item.stringOrderStatus} </TableCell>
                   <TableCell align="left">{item.customer}</TableCell>
@@ -89,16 +88,18 @@ function Order() {
                     <IconButton onClick={handleClickOpen}>
                       <MoreVertIcon />
                     </IconButton>
-                    <OrderPopup
-                      selectedValue={selectedValue}
-                      open={open}
-                      onClose={handleClose}
-                    />
+
                   </TableCell>
+
                 </TableRow>
               ))}
             </TableBody>
           </Table>
+          <OrderPopup
+            selectedValue={selectedValue}
+            open={open}
+            onClose={handleClose}
+          />
         </TableContainer>
       </IconContext.Provider>
     </>
