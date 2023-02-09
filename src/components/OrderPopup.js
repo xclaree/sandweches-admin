@@ -29,9 +29,16 @@ function OrderPopup(props) {
     <Dialog
       onClose={handleClose}
       open={open}
-      aria-labelledby="simple-dialog-title"
-      sx={{ '& .MuiBackdrop-root': { backgroundColor: 'transparent' },
-    boxShadow: 'none' }}
+      sx={{ '& .MuiBackdrop-root': { backgroundColor: 'transparent', borderRadius: '60px' },
+      "& .MuiDialog-container": {
+        alignItems: "flex-start"
+      }, boxShadow: 'none'
+      }}
+      PaperProps={{
+        style: { borderRadius: 20, position: 'initial' }   
+      }}
+      
+      
     >
       <List sx={{ pt: 0 }}>
         {options.map((item) => (
