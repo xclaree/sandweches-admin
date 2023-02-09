@@ -11,7 +11,7 @@ import TableRow from "@mui/material/TableRow";
 import { IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import OrderPopup from "./OrderPopup";
-import Dialog from '@mui/material/Dialog';
+import { FitScreen } from "@mui/icons-material";
 
 const options = ["Dettagli ordine", "Modifica stato", "Elimina ordine"];
 
@@ -31,14 +31,15 @@ function Order() {
   return (
     <>
       <IconContext.Provider>
-        <TableContainer sx={{ maxHeight: 440 }}>
+        <TableContainer sx={{ maxHeight: '60vh' }}
+        >
           <Table
             stickyHeader
-            aria-label="sticky table"
             style={{ background: "#FFF6E3" }}
           >
             <TableHead>
-              <TableRow style={{ fontWeight: "600", background: "#FFF6E3" }}>
+              <TableRow style={{ fontWeight: "600", background: "#FFF6E3" }}
+              >
                 <TableCell
                   align="left"
                   style={{ fontWeight: "600", background: "#FFF6E3" }}
