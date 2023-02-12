@@ -17,8 +17,7 @@ const theme = createTheme({
   typography: {
     allVariants: {
       fontFamily: 'Inter',
-      fontWeight: '600w',
-      background: "#FFF6E3",
+      fontWeight: '600w'
     },
   },
 });
