@@ -1,5 +1,5 @@
 import React from "react";
-import { OrderData } from "./OrderData";
+import OrderData from "./OrderData";
 import "../App.css";
 import { IconContext } from "react-icons";
 import Table from "@mui/material/Table";
@@ -11,7 +11,6 @@ import TableRow from "@mui/material/TableRow";
 import { IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import OrderPopup from "./OrderPopup";
-import { FitScreen } from "@mui/icons-material";
 
 const options = ["Dettagli ordine", "Modifica stato", "Elimina ordine"];
 
@@ -31,7 +30,7 @@ function Order() {
   return (
     <>
       <IconContext.Provider>
-        <TableContainer sx={{ maxHeight: '60vh' }}
+        <TableContainer sx={{ maxHeight: '65vh' }}
         >
           <Table
             stickyHeader
@@ -80,11 +79,11 @@ function Order() {
                 <TableRow
                   key={index}
                 >
-                  <TableCell align="left">{item.stringOrderStatus} </TableCell>
-                  <TableCell align="left">{item.customer}</TableCell>
-                  <TableCell align="left">{item.total}</TableCell>
-                  <TableCell align="left">{item.pickup}</TableCell>
-                  <TableCell align="left">{item.break}</TableCell>
+                  {/* <TableCell align="left">{item.stringOrderStatus} </TableCell> */}
+                  {/* <TableCell align="left">{item.customer}</TableCell> */}
+                  {/* <TableCell align="left">{item.total}</TableCell> */}
+                  {/* <TableCell align="left">{item.pickup}</TableCell>
+                  <TableCell align="left">{item.break}</TableCell> */}
                   <TableCell>
                     <IconButton onClick={handleClickOpen}>
                       <MoreVertIcon />
