@@ -78,14 +78,12 @@ function Order() {
                 </TableCell>
                 <TableCell
                   align="left"
-                  style={{ fontWeight: "600", background: "#FFF6E3" }}
-                >
+                  style={{ fontWeight: "600", background: "#FFF6E3" }}>
                   Pickup
                 </TableCell>
                 <TableCell
                   align="left"
-                  style={{ fontWeight: "600", background: "#FFF6E3" }}
-                >
+                  style={{ fontWeight: "600", background: "#FFF6E3" }}>
                   Orario
                 </TableCell>
                 <TableCell
