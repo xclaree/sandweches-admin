@@ -9,7 +9,8 @@ function Home() {
                 <div>
                     <h1>Elenco Ordini</h1>
                 </div>
-                <div className="order-list">
+                <span></span>
+                <div>
                     <div>
                         <Order /> 
                     </div>

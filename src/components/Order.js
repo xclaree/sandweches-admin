@@ -1,43 +1,84 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import "../App.css";
-import { IconContext } from "react-icons";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import OrderPopup from "./OrderPopup";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-
-const theme = createTheme({
-  typography: {
-    allVariants: {
-      fontFamily: 'Inter',
-      fontWeight: '600w'
-    },
-  },
-});
+import '../App.css';
 
 const options = ["Dettagli ordine", "Modifica stato", "Elimina ordine"];
 
-function Order() {
-  const [data, setData] = useState([]);
+const items = [
+  {
+    user: "Baleanu Valeria",
+    created: "20/02/2023 10:02:00",
+    pickup: "Settore A itis",
+    break: "9:30",
+  },
+  {
+    user: "5E",
+    created: "20/02/2023 10:02:00",
+    total: "$20",
+    pickup: "Settore A itis",
+    break: "9:30",
+  },
+  {
+    user: "5E",
+    created: "20/02/2023 10:02:00",
+    total: "$20",
+    pickup: "Settore A itis",
+    break: "9:30",
+  },
+  {
+    user: "5E",
+    created: "20/02/2023 10:02:00",
+    total: "$20",
+    pickup: "Settore A itis",
+    break: "9:30",
+  },
+  {
+    user: "5E",
+    created: "20/02/2023 10:02:00",
+    total: "$20",
+    pickup: "Settore A itis",
+    break: "9:30",
+  },
+  {
+    user: "5E",
+    created: "20/02/2023 10:02:00",
+    total: "$20",
+    pickup: "Settore A itis",
+    break: "9:30",
+  },
+  {
+    user: "5E",
+    created: "20/02/2023 10:02:00",
+    total: "$20",
+    pickup: "Settore A itis",
+    break: "9:30",
+  },
+  {
+    user: "5E",
+    created: "20/02/2023 10:02:00",
+    total: "$20",
+    pickup: "Settore A itis",
+    break: "9:30",
+  },
+  {
+    user: "5E",
+    created: "20/02/2023 10:02:00",
+    total: "$20",
+    pickup: "Settore A itis",
+    break: "9:30",
+  },
+  {
+    user: "5E",
+    created: "20/02/2023 10:02:00",
+    total: "$20",
+    pickup: "Settore A itis",
+    break: "9:30",
+  },
+];
 
-  useEffect(() => {
-    const orderData = async () => {
-      const response = await fetch(
-        "http://localhost/evomatic/API/order/GetArchiveOrder.php"
-      );
-      const data = await response.json();
-      setData(Object.values(data));
-    };
-    orderData();
-  }, []);
-
+const OrderData = () => {
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(options[1]);
 
@@ -50,75 +91,68 @@ function Order() {
     setSelectedValue(value);
   };
 
-  return (
-    <>
-    <ThemeProvider theme={theme}>
-      <IconContext.Provider>
-        <TableContainer sx={{ maxHeight: "65vh" }}>
-          <Table stickyHeader style={{ background: "#FFF6E3" }}>
-            <TableHead>
-              <TableRow style={{ fontWeight: "600", background: "#FFF6E3" }}>
-                <TableCell
-                  align="left"
-                  style={{ fontWeight: "600", background: "#FFF6E3" }}
-                >
-                  Stato
-                </TableCell>
-                <TableCell
-                  align="left"
-                  style={{ fontWeight: "600", background: "#FFF6E3"}}
-                >
-                  Destinatario
-                </TableCell>
-                <TableCell
-                  align="left"
-                  style={{ fontWeight: "600", background: "#FFF6E3" }}
-                >
-                  Totale
-                </TableCell>
-                <TableCell
-                  align="left"
-                  style={{ fontWeight: "600", background: "#FFF6E3" }}>
-                  Pickup
-                </TableCell>
-                <TableCell
-                  align="left"
-                  style={{ fontWeight: "600", background: "#FFF6E3" }}>
-                  Orario
-                </TableCell>
-                <TableCell
-                  style={{ fontWeight: "600", background: "#FFF6E3" }}
-                />
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {data && data.map((order, index) => {
-                return (
-                  <TableRow key={index}>
-                  <TableCell align="left">{order.id}</TableCell>
-                  <TableCell align="left">{order.total}</TableCell>
-                  <TableCell align="left">{order.pickup}</TableCell>
-                  <TableCell align="left">{order.break}</TableCell>
-                  <TableCell>
-                    <IconButton onClick={handleClickOpen}>
-                      <MoreVertIcon />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-                );
-                })}
-            </TableBody>
-          </Table>
-          <OrderPopup
-            selectedValue={selectedValue}
-            open={open}
-            onClose={handleClose}
-          />
-        </TableContainer>
-      </IconContext.Provider>
-      </ThemeProvider>
-    </>
-  );
-}
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false); //METTI TRUE SE LA API VA
 
-export default Order;
+  useEffect(() => {
+    axios
+      .get("https://localhost/evomatic/API/order/GetArchiveOrder.php")
+      .then((res) => {
+        setData(res.data);
+        setLoading(false);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  return loading ? (
+    <div className="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Stato</th>
+            <th>Destinatario</th>
+            <th>Creazione</th>
+            <th>Pickup</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="loading">
+            <td colSpan={4}>
+              <div className="loading-animation" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  ) : (
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Stato</th>
+            <th>Destinatario</th>
+            <th>Creazione</th>
+            <th>Pickup</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((item, index) => (
+            <tr key={index}>
+              <td>{item.id}</td>
+              <td>{item.user}</td>
+              <td>{item.created}</td>
+              <td>{item.pickup}</td>
+              <td>
+                <IconButton onClick={handleClickOpen}>
+                  <MoreVertIcon />
+                </IconButton>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default OrderData;

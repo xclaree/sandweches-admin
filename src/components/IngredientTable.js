@@ -11,8 +11,17 @@ import TableRow from "@mui/material/TableRow";
 import { IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import IngredientPopup from "./IngredientPopup";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const options = ["Modifica ingrediente", "Elimina ingrediente"];
+
+const theme = createTheme({
+  typography: {
+    allVariants: {
+      fontFamily: 'Inter',
+    },
+  },
+});
 
 export default function IngredientTable() {
   const [open, setOpen] = React.useState(false);
@@ -29,6 +38,7 @@ export default function IngredientTable() {
 
   return (
     <>
+    <ThemeProvider theme={theme}>
       <IconContext.Provider>
         <TableContainer sx={{ maxHeight: 440 }}>
           <Table
@@ -78,6 +88,7 @@ export default function IngredientTable() {
           />
         </TableContainer>
       </IconContext.Provider>
+      </ThemeProvider>
     </>
   );
 }
