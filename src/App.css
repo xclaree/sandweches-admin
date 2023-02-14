@@ -9,8 +9,8 @@
 
 body {
   overflow: hidden;
+  background-color: #fff6e3;
 }
-
 
 .menu-bars {
   margin-left: 2rem;
@@ -25,7 +25,7 @@ body {
 .nav-menu {
   display: flex;
   overflow: auto;
-  background-color: #FFDE98;
+  background-color: #ffde98;
   width: 30vh;
   height: 100vh;
   display: flex;
@@ -54,19 +54,19 @@ body {
   height: 100%;
   display: flex;
   align-items: center;
-  padding:  16px;
+  padding: 16px;
   border-radius: 4px;
 }
 
 .nav-text a:hover {
-  background-color: #FFE8B7;
+  background-color: #ffe8b7;
   transition: 450ms;
   border-radius: 80px;
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.299));
 }
 
 .nav-text a.active {
-  background-color: #FFE8B7;
+  background-color: #ffe8b7;
   border-radius: 80px;
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.299));
 }
@@ -99,7 +99,7 @@ span {
   justify-content: left;
   font-size: 1.2rem;
   font-weight: 600;
-  background-color: #FFF6E3;
+  background-color: #fff6e3;
   color: #000;
   padding: 60px 20px 60px 150px;
 }
@@ -107,7 +107,7 @@ span {
 ::-webkit-scrollbar {
   width: 10px;
   height: 8px;
-  background-color: #FFDE98;
+  background-color: #ffde98;
   border-radius: 600px;
 }
 
@@ -120,30 +120,38 @@ span {
 
 .table-container {
   
-  display: block; 
-  height: 20px;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 70vh;
+  width: 100%;
 }
-
 
 table {
-  position: relative;
-  width: 100%;
+  
+  width: fit-content;
+  padding: 20px 80px 0px 0px;
   font-size: 15px;
-  padding: 20px 80px 8px 0px;
 }
 
-thead {
-  background-color: transparent;
-  position: sticky;
-}
-
-tbody {  
-  border-collapse: separate;
+tbody {
   border-spacing: 0px;
   font-weight: 400;
 }
 
-th, td {
+th{
+  background-color: #fff6e3;
+  position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    width: 100vh;
+    padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+td {
+  width: 100vh;
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
@@ -154,8 +162,8 @@ th {
 }
 
 .loading-animation {
-  border: 8px solid #FFEBBF;
-  border-top: 8px solid #FFDE98;
+  border: 8px solid #ffebbf;
+  border-top: 8px solid #ffde98;
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -165,7 +173,6 @@ th {
   border-collapse: separate;
   border-spacing: 0;
 }
-
 
 @keyframes spin {
   0% {

@@ -3,6 +3,7 @@ import axios from "axios";
 import { IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import '../App.css';
+import OrderPopup from './OrderPopup';
 
 const options = ["Dettagli ordine", "Modifica stato", "Elimina ordine"];
 
@@ -105,7 +106,7 @@ const OrderData = () => {
   }, []);
 
   return loading ? (
-    <div className="table-container">
+    <div>
       <table>
         <thead>
           <tr>
@@ -125,7 +126,7 @@ const OrderData = () => {
       </table>
     </div>
   ) : (
-    <div>
+    <div  className="table-container">
       <table>
         <thead>
           <tr>
@@ -151,6 +152,11 @@ const OrderData = () => {
           ))}
         </tbody>
       </table>
+      <OrderPopup
+            selectedValue={selectedValue}
+            open={open}
+            onClose={handleClose}
+          />
     </div>
   );
 };
