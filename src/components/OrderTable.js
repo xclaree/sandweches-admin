@@ -107,20 +107,15 @@ const items = [
 ];
 
 const queryClient = new QueryClient();
+const isLoading = true;
 
-function fetchArchiveOrder() {
+function GetArchiveOrder() {
   return axios
-    .get("http://localhost/evomatic/API/order/GetArchiveOrder.php")
-    .then((response) => response.data);
-}
-
-function useArchiveOrder() {
-  return useQuery("archiveOrder", { queryFn: fetchArchiveOrder });
-}
-
-function useArchiveOrderData() {
-  const { data, isLoading } = useArchiveOrder();
-  return { data, isLoading };
+    .get("https://paninara.claudiodressadore.net/evomatic/API/order/GetArchiveOrder.php")
+    .then((response) => {
+      isLoading = false;
+      return response.data
+    });
 }
 
 const OrderData = () => {
@@ -136,7 +131,17 @@ const OrderData = () => {
     setSelectedValue(value);
   };
 
-  const { data, isLoading } = useArchiveOrderData();
+  const ArchiveOrderQuery = useQuery({
+    queryKey: ["order"],
+    queryFn: (obj) => {
+      console.log(obj)
+      return GetArchiveOrder()
+    }
+  })
+
+  if(ArchiveOrderQuery.status === "error"){
+    return <a>'Errore: ' + {JSON.stringify(ArchiveOrderQuery.error)}</a>
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -171,8 +176,7 @@ const OrderData = () => {
               </tr>
             </thead>
             <tbody>
-              {data &&
-                data.map((item) => (
+              {ArchiveOrderQuery.data.map((item) => (
                   <tr key={item.id}>
                     <td
                       style={{
