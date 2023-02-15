@@ -2,24 +2,27 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import '../App.css';
-import OrderPopup from './OrderPopup';
+import "../App.css";
+import OrderPopup from "./OrderPopup";
+import {
+  useQuery,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 
 const options = ["Dettagli ordine", "Modifica stato", "Elimina ordine"];
 
-function GetColorStatus(status){
-  switch(status){
+function GetColorStatus(status) {
+  switch (status) {
     case "pronto":
-      return 'green';
+      return "green";
     case "ordinato":
-      return 'orange';
+      return "orange";
     case "annullato":
-      return 'red';
+      return "red";
   }
-  return 'red';
+  return "red";
 }
-
-
 
 const items = [
   {
@@ -27,7 +30,7 @@ const items = [
     created: "20/02/2023 10:02:00",
     pickup: "Settore A itis",
     break: "9:30",
-    status: "pronto"
+    status: "pronto",
   },
   {
     user: "5E",
@@ -35,7 +38,7 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
-    status: "pronto"
+    status: "pronto",
   },
   {
     user: "5E",
@@ -43,7 +46,7 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
-    status: "ordinato"
+    status: "ordinato",
   },
   {
     user: "5E",
@@ -51,7 +54,7 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
-    status: "annullato"
+    status: "annullato",
   },
   {
     user: "5E",
@@ -59,7 +62,7 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
-    status: "pronto"
+    status: "pronto",
   },
   {
     user: "5E",
@@ -67,7 +70,7 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
-    status: "pronto"
+    status: "pronto",
   },
   {
     user: "5E",
@@ -75,7 +78,7 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
-    status: "pronto"
+    status: "pronto",
   },
   {
     user: "5E",
@@ -83,7 +86,7 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
-    status: "pronto"
+    status: "pronto",
   },
   {
     user: "5E",
@@ -91,7 +94,7 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
-    status: "pronto"
+    status: "pronto",
   },
   {
     user: "5E",
@@ -99,9 +102,26 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
-    status: "pronto"
+    status: "pronto",
   },
 ];
+
+const queryClient = new QueryClient();
+
+function fetchArchiveOrder() {
+  return axios
+    .get("http://localhost/evomatic/API/order/GetArchiveOrder.php")
+    .then((response) => response.data);
+}
+
+function useArchiveOrder() {
+  return useQuery("archiveOrder", { queryFn: fetchArchiveOrder });
+}
+
+function useArchiveOrderData() {
+  const { data, isLoading } = useArchiveOrder();
+  return { data, isLoading };
+}
 
 const OrderData = () => {
   const [open, setOpen] = React.useState(false);
@@ -116,72 +136,72 @@ const OrderData = () => {
     setSelectedValue(value);
   };
 
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false); //METTI TRUE SE LA API VA
+  const { data, isLoading } = useArchiveOrderData();
 
-  useEffect(() => {
-    axios
-      .get("http://localhost/evomatic/API/order/GetArchiveOrder.php")
-      .then((res) => {
-        setData(res.data);
-        setLoading(false);
-      })
-      .catch((err) => console.error(err));
-  }, []);
-
-  return loading ? (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Stato</th>
-            <th>Destinatario</th>
-            <th>Creazione</th>
-            <th>Pickup</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="loading">
-            <td colSpan={4}>
+  return (
+    <QueryClientProvider client={queryClient}>
+      {isLoading ? (
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>Stato</th>
+                <th>Destinatario</th>
+                <th>Creazione</th>
+                <th>Pickup</th>
+              </tr>
+            </thead>
+          </table>
+          <span></span>
+          <div className="loading">
+            <div colSpan={4}>
               <div className="loading-animation" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  ) : (
-    <div  className="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Stato</th>
-            <th>Destinatario</th>
-            <th>Creazione</th>
-            <th>Pickup</th>
-          </tr>
-        </thead>
-        <tbody>
-          {items.map((item, index) => (
-            <tr key={index}>
-              <td style={{color: GetColorStatus(item.status), fontWeight: '600'}}>{item.status.toUpperCase()}</td>
-              <td>{item.user}</td>
-              <td>{item.created}</td>
-              <td>{item.pickup}</td>
-              <td>
-                <IconButton onClick={handleClickOpen}>
-                  <MoreVertIcon />
-                </IconButton>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <OrderPopup
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Stato</th>
+                <th>Destinatario</th>
+                <th>Creazione</th>
+                <th>Pickup</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data &&
+                data.map((item) => (
+                  <tr key={item.id}>
+                    <td
+                      style={{
+                        color: GetColorStatus(item.status),
+                        fontWeight: "600",
+                      }}
+                    >
+                      {item.status.toUpperCase()}
+                    </td>
+                    <td>{item.user}</td>
+                    <td>{item.created}</td>
+                    <td>{item.pickup}</td>
+                    <td>
+                      <IconButton onClick={handleClickOpen}>
+                        <MoreVertIcon />
+                      </IconButton>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+          <OrderPopup
             selectedValue={selectedValue}
             open={open}
             onClose={handleClose}
           />
-    </div>
+        </div>
+      )}
+    </QueryClientProvider>
   );
 };
 
