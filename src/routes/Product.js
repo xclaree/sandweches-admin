@@ -5,17 +5,17 @@ import App from'./NewProduct';
 
 function Product(){
     return(
-<NavLink className="home" to='/newproduct'>
+<div className="home" >
               <h1>Product</h1>                    
-                <div className="add-product">
+                <NavLink className="add-product" to='/newproduct'>
                     <h1> Add ingredient </h1>
-                </div>
+                </NavLink>
             <div>
                 <label class="label" >Nome</label>
                 <label class="label"> Prezzo</label>
                 <label class="label"> Stato</label>
             </div> 
-        </NavLink> 
+        </div> 
     )
 }
 export default Product;
