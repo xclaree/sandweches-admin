@@ -1,6 +1,6 @@
 import React from "react";
 import '../App.css';
-import Order from "../components/Order";
+import Order from "../components/OrderTable";
 
 function Home() {
     return (
@@ -17,7 +17,6 @@ function Home() {
 
                 </div>
             </div>
-
         </>
     )
 }
