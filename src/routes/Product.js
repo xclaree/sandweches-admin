@@ -1,13 +1,11 @@
 import { display } from "@mui/system";
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import App from'./NewProduct';
-    const nextPage = () => {
-      window.location.href = "./NewProduct.js";
-    }
+
 function Product(){
     return(
-<div className="home" onClick={nextPage}>
+<NavLink className="home" to='/newproduct'>
               <h1>Product</h1>                    
                 <div className="add-product">
                     <h1> Add ingredient </h1>
@@ -17,7 +15,7 @@ function Product(){
                 <label class="label"> Prezzo</label>
                 <label class="label"> Stato</label>
             </div> 
-        </div> 
+        </NavLink> 
     )
 }
 export default Product;

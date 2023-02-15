@@ -7,6 +7,7 @@ import Product from "./routes/Product";
 import Offer from "./routes/Offer";
 import Profile from "./routes/Profile";
 import NavBar from "./components/NavBar";
+import NewProduct from "./routes/NewProduct";
 import "./App.css";
 import {
   QueryClient,
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         path: "profile",
         element: <Profile />,
       },
+      {
+        path: "newproduct",
+        element: <NewProduct />
+      }
     ],
   },
 ]);

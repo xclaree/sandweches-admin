@@ -1,6 +1,6 @@
 import React from "react";
 import '../App.css';
-import Order from "../components/Order";
+import Order from "../components/OrderTable";
 import NewPasswordPopup from"../components/NewPasswordPopup";
 
 function Profile(){
@@ -33,7 +33,7 @@ function Profile(){
                 </label>
             </div>
             <div>
-              <input type="password" size="40" maxlength="200" className="inpput_password_user" />
+              <input type="password" size="40" maxlength="200" className="input_password_user" />
             </div>
             <div className="termini_condizione_button" >
                 <h3> Termine e condizioni</h3>
