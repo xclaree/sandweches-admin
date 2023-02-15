@@ -8,6 +8,7 @@ function Ingredient() {
                 <div>
                     <h1>Ingredient</h1>
                 </div>
+                <span></span>
                 <div className="ingredient-list">
                     <div>
                         <IngredientTable /> 

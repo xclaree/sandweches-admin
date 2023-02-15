@@ -7,12 +7,27 @@ import OrderPopup from './OrderPopup';
 
 const options = ["Dettagli ordine", "Modifica stato", "Elimina ordine"];
 
+function GetColorStatus(status){
+  switch(status){
+    case "pronto":
+      return 'green';
+    case "ordinato":
+      return 'orange';
+    case "annullato":
+      return 'red';
+  }
+  return 'red';
+}
+
+
+
 const items = [
   {
     user: "Baleanu Valeria",
     created: "20/02/2023 10:02:00",
     pickup: "Settore A itis",
     break: "9:30",
+    status: "pronto"
   },
   {
     user: "5E",
@@ -20,6 +35,7 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
+    status: "pronto"
   },
   {
     user: "5E",
@@ -27,6 +43,7 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
+    status: "ordinato"
   },
   {
     user: "5E",
@@ -34,6 +51,7 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
+    status: "annullato"
   },
   {
     user: "5E",
@@ -41,6 +59,7 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
+    status: "pronto"
   },
   {
     user: "5E",
@@ -48,6 +67,7 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
+    status: "pronto"
   },
   {
     user: "5E",
@@ -55,6 +75,7 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
+    status: "pronto"
   },
   {
     user: "5E",
@@ -62,6 +83,7 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
+    status: "pronto"
   },
   {
     user: "5E",
@@ -69,6 +91,7 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
+    status: "pronto"
   },
   {
     user: "5E",
@@ -76,6 +99,7 @@ const items = [
     total: "$20",
     pickup: "Settore A itis",
     break: "9:30",
+    status: "pronto"
   },
 ];
 
@@ -97,7 +121,7 @@ const OrderData = () => {
 
   useEffect(() => {
     axios
-      .get("https://localhost/evomatic/API/order/GetArchiveOrder.php")
+      .get("http://localhost/evomatic/API/order/GetArchiveOrder.php")
       .then((res) => {
         setData(res.data);
         setLoading(false);
@@ -139,7 +163,7 @@ const OrderData = () => {
         <tbody>
           {items.map((item, index) => (
             <tr key={index}>
-              <td>{item.id}</td>
+              <td style={{color: GetColorStatus(item.status), fontWeight: '600'}}>{item.status.toUpperCase()}</td>
               <td>{item.user}</td>
               <td>{item.created}</td>
               <td>{item.pickup}</td>

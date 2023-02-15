@@ -1,29 +1,94 @@
-import React from "react";
-import { IngredientData } from "./IngredientData";
-import "../App.css";
-import { IconContext } from "react-icons";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import IngredientPopup from "./IngredientPopup";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import '../App.css';
+import IngredientPopup from './IngredientPopup';
 
 const options = ["Modifica ingrediente", "Elimina ingrediente"];
 
-const theme = createTheme({
-  typography: {
-    allVariants: {
-      fontFamily: 'Inter',
-    },
-  },
-});
 
-export default function IngredientTable() {
+const items = [   //sarà il risultato della API
+
+    {
+        name: "Mortadella",
+        allergen: "Pistacchio",
+    },
+    {
+        name: "Prosciutto",
+        allergen: "Pistacchio",
+
+    },
+    {
+        name: "Salame",
+        allergen: "Pepe",
+    },
+    {
+        name: "Prosciutto",
+        allergen: "Pistacchio",
+       
+    },
+    {
+        name: "Prosciutto",
+        allergen: "Pistacchio",
+
+    },
+    {
+        name: "Prosciutto",
+        allergen: "Pistacchio",
+
+    },
+    {
+        name: "Prosciutto",
+        allergen: "Pistacchio",
+
+    },
+    {
+        name: "Prosciutto",
+        allergen: "Pistacchio",
+
+    },
+    {
+        name: "Prosciutto",
+        allergen: "Pistacchio",
+
+    },
+    {
+        name: "Prosciutto",
+        allergen: "Pistacchio",
+
+    },
+    {
+        name: "Prosciutto",
+        allergen: "Pistacchio",
+
+    },
+    {
+        name: "Prosciutto",
+        allergen: "Pistacchio",
+
+    },
+    {
+        name: "Prosciutto",
+        allergen: "Pistacchio",
+
+    },
+    {
+        name: "Prosciutto",
+        allergen: "Pistacchio",
+
+    },{
+        name: "Prosciutto",
+        allergen: "Pistacchio",
+
+    },{
+        name: "Prosciutto",
+        allergen: "Pistacchio",
+
+    }
+];
+
+const IngredientTable = () => {
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(options[1]);
 
@@ -36,59 +101,67 @@ export default function IngredientTable() {
     setSelectedValue(value);
   };
 
-  return (
-    <>
-    <ThemeProvider theme={theme}>
-      <IconContext.Provider>
-        <TableContainer sx={{ maxHeight: 440 }}>
-          <Table
-            stickyHeader
-            aria-label="sticky table"
-            style={{ background: "#FFF6E3" }}
-          >
-            <TableHead>
-              <TableRow style={{ fontWeight: "600", background: "#FFF6E3" }}>
-                <TableCell
-                  align="left"
-                  style={{ fontWeight: "600", background: "#FFF6E3" }}
-                >
-                  Nome
-                </TableCell>
-                <TableCell
-                  align="left"
-                  style={{ fontWeight: "600", background: "#FFF6E3" }}
-                >
-                  Allergeni
-                </TableCell>
-                <TableCell
-                  align="left"
-                  style={{ fontWeight: "600", background: "#FFF6E3" }}
-                />
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {IngredientData.map((item, index) => (
-                <TableRow key={index}>
-                  <TableCell align="left">{item.name} </TableCell>
-                  <TableCell align="left">{item.allergen}</TableCell>
-                  <TableCell></TableCell>
-                  <TableCell>
-                    <IconButton onClick={handleClickOpen}>
-                      <MoreVertIcon />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-          <IngredientPopup
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false); //METTI TRUE SE LA API VA
+
+  useEffect(() => {
+    axios
+      .get("http://localhost/evomatic/API/order/GetArchiveOrder.php")
+      .then((res) => {
+        setData(res.data);
+        setLoading(false);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  return loading ? (
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Allergeni</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="loading">
+            <td colSpan={4}>
+              <div className="loading-animation" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  ) : (
+    <div className="table-container">
+      <table>
+        <thead>
+          <tr>
+          <th>Nome</th>
+            <th>Allergeni</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((item, index) => (
+            <tr key={index}>
+              <td>{item.name}</td>
+              <td>{item.allergen}</td>
+              <td>
+                <IconButton onClick={handleClickOpen}>
+                  <MoreVertIcon />
+                </IconButton>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <IngredientPopup
             selectedValue={selectedValue}
             open={open}
             onClose={handleClose}
           />
-        </TableContainer>
-      </IconContext.Provider>
-      </ThemeProvider>
-    </>
+    </div>
   );
-}
+};
+
+export default IngredientTable;
