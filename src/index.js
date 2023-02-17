@@ -8,6 +8,7 @@ import Offer from "./routes/Offer";
 import Profile from "./routes/Profile";
 import NavBar from "./components/NavBar";
 import NewProduct from "./routes/NewProduct";
+import Login from "./routes/Login";
 import "./App.css";
 import {
   QueryClient,
@@ -16,6 +17,9 @@ import {
 
 const AppLayout = () => (
   <>
+    /*<Login
+      open={true}
+    />*/
     <Outlet />
     <NavBar />
   </>
@@ -50,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "newproduct",
         element: <NewProduct />
+      },
+      {
+        path: "login",
+        element: <Login />
       }
     ],
   },
