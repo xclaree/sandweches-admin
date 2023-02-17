@@ -107,13 +107,13 @@ const items = [
 ];
 
 const queryClient = new QueryClient();
-const isLoading = true;
+const [loading, setLoading] = setLoading(true);
 
 function GetArchiveOrder() {
   return axios
     .get("https://paninara.claudiodressadore.net/evomatic/API/order/GetArchiveOrder.php")
     .then((response) => {
-      isLoading = false;
+      setLoading(false);
       return response.data
     });
 }
@@ -145,7 +145,7 @@ const OrderData = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {isLoading ? (
+      {loading ? (
         <div>
           <table>
             <thead>
