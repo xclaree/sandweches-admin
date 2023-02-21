@@ -2,6 +2,7 @@ import React from "react";
 import '../App.css';
 import Order from "../components/OrderTable";
 import NewPasswordPopup from"../components/NewPasswordPopup";
+import { Link, NavLink } from 'react-router-dom';
 
 function Profile(){
     return(
@@ -36,7 +37,10 @@ function Profile(){
               <input type="password" size="40" maxlength="200" className="input_password_user" />
             </div>
             <div className="termini_condizione_button" >
+                <NavLink to="/termsconditions">
                 <h3> Termine e condizioni</h3>
+
+                </NavLink>
             </div>
             <div className="modifica_password_button" onClick={NewPasswordPopup} >
                 Modifica Password

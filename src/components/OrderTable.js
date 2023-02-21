@@ -107,7 +107,7 @@ const items = [
 ];
 
 const queryClient = new QueryClient();
-const isLoading = true;
+const isLoading = false; //se vuoi prvare le api metti TRUE
 
 function GetArchiveOrder() {
   return axios
@@ -176,7 +176,7 @@ const OrderData = () => {
               </tr>
             </thead>
             <tbody>
-              {ArchiveOrderQuery.data.map((item) => (
+              {items.map((item) => ( //se vuoi provare le api metti ArchiveOrderQuery.data.map
                   <tr key={item.id}>
                     <td
                       style={{
