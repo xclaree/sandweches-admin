@@ -270,90 +270,89 @@ label > div {
 }
 
 .infoKcal{
-align-items: center;
-position: fixed;
-width: 135px;
-justify-content: center;
-left: 44%;
-bottom: 25%;
-}
-
-.infoFat{
-align-items: center;
-position: fixed;
-width: 135px;
-justify-content: center;
-left: 50%;
-bottom: 25%;
-
-}
-.infoSaturedFat{
-align-items: center;
-position: fixed;
-width: 135px;
-justify-content: center;
-left: 56%;
-bottom: 25%;
-
-
-}
-.infoCarbohydrate{
   align-items: center;
   position: fixed;
   width: 135px;
   justify-content: center;
-  left: 64%;
-  bottom: 25%;
-
-}
-
-.infoSugar{
-  align-items: center;
-  position: fixed;
-  width: 135px;
-  justify-content: center;
-  bottom: 15%;
   left: 44%;
-
-}
-.infoProtein{
+  bottom: 25%;
+  }
+  
+  .infoFat{
   align-items: center;
   position: fixed;
   width: 135px;
   justify-content: center;
-  bottom: 15%;
   left: 50%;
-
-}
-.infoFiber{
+  bottom: 25%;
+  
+  }
+  .infoSaturedFat{
   align-items: center;
   position: fixed;
   width: 135px;
   justify-content: center;
-  bottom: 15%;
   left: 56%;
+  bottom: 25%;
+  
+  
+  }
+  .infoCarbohydrate{
+    align-items: center;
+    position: fixed;
+    width: 135px;
+    justify-content: center;
+    left: 64%;
+    bottom: 25%;
+  
+  }
+  
+  .infoSugar{
+    align-items: center;
+    position: fixed;
+    width: 135px;
+    justify-content: center;
+    bottom: 15%;
+    left: 44%;
+  
+  }
+  .infoProtein{
+    align-items: center;
+    position: fixed;
+    width: 135px;
+    justify-content: center;
+    bottom: 15%;
+    left: 50%;
+  
+  }
+  .infoFiber{
+    align-items: center;
+    position: fixed;
+    width: 135px;
+    justify-content: center;
+    bottom: 15%;
+    left: 56%;
+  
+  }
+  .infoSalt{
+    align-items: center;
+    position: fixed;
+    width: 135px;
+    justify-content: center; 
+     bottom: 15%;
+     left: 64%;
+  
+  }
+  .lbNutritionalValues{
+    position: fixed;
+    left: 51%;
+    bottom: 35%;
+  }
 
-}
-.infoSalt{
-  align-items: center;
-  position: fixed;
-  width: 135px;
-  justify-content: center; 
-   bottom: 15%;
-   left: 64%;
-
-}
-.lbNutritionalValues{
-  position: fixed;
-  left: 51%;
-  bottom: 35%;
-}
-
-.addProduct{
-  position: fixed;
-  top: 7%;
-  right: 10%;
-}
+  .addIngredient{
+    position: fixed;
+    top: 45%;
+  }
 .addIngredient{
   position: fixed;
   top: 45%;
@@ -372,4 +371,107 @@ bottom: 25%;
   font-weight: 400;
   background-color: #fff6e3;
   color: #000;
+}
+
+.input_password_user{
+  border-style: inset;
+  border-width: 0;
+    background-color: #fff6e3;
+}
+
+.termini_condizione_button, .modifica_password_button{
+  padding-top: 30px;
+  padding-left: 30px;
+  border-radius: 30px;
+  height: 90px;
+  width: 280px;
+  background-color: #ffcb5c;
+  text-decoration: none;
+}
+.addProduct{
+  position: fixed;
+  top: 4%;
+  right: 10%;
+  padding-top: 15px;
+  padding-left: 50px;
+  border-radius: 30px;
+  height: 70px;
+  width: 280px;
+  background-color: #ffcb5c;
+  text-decoration: none;
+}
+.botton_new_password{
+  position: fixed;
+  bottom: 15%;
+  right: 40%;
+  padding-top: 20px;
+  padding-left: 45px;
+  border-radius: 30px;
+  height: 70px;
+  width: 280px;
+  background-color: #ffcb5c;
+  text-decoration: none;
+}
+.input_user_last_password{
+  position: fixed;
+  top: 30%;
+  right: 40%;
+  padding-top: 5px;
+  padding-left: 65px;
+  border-radius: 30px;
+  height: 50px;
+  width: 280px;
+  background-color: #ffcb5c;
+  text-decoration: none;
+  border: none;
+}
+.input_user_new_password{
+  position: fixed;
+  top: 40%;
+  right: 40%;
+  padding-top: 5px;
+  padding-left: 65px;
+  border-radius: 30px;
+  height: 50px;
+  width: 280px;
+  background-color: #ffcb5c;
+  text-decoration: none;
+  border: none;
+}
+.lbprevious_password{
+  position: fixed;
+  top: 27%;
+  left: 48.7%;
+}
+.lbnew_password{
+  position: fixed;
+  top: 37%;
+  left: 49.5%;
+}
+.show_hide_previous_password{
+  position: fixed;
+  top: 30%;
+  right: 30%;
+  padding-top: 12px;
+  padding-left: 30px;
+  border-radius: 30px;
+  height: 50px;
+  width: 150px;
+  background-color: #ffcb5c;
+  text-decoration: none;
+  border: none;
+}
+
+.show_hide_new_password{
+  position: fixed;
+  top: 40%;
+  right: 30%;
+  padding-top: 12px;
+  padding-left: 30px;
+  border-radius: 30px;
+  height: 50px;
+  width: 150px;
+  background-color: #ffcb5c;
+  text-decoration: none;
+  border: none;
 }
