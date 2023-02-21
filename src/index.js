@@ -9,6 +9,7 @@ import Profile from "./routes/Profile";
 import NavBar from "./components/NavBar";
 import NewProduct from "./routes/NewProduct";
 import TermsConditions from "./routes/TermsConditions";
+import ResetPassword from "./routes/ResetPassword";
 import "./App.css";
 import {
   QueryClient,
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "termsconditions",
         element: <TermsConditions />
+      },
+      {
+        path: "resetpassword",
+        element: <ResetPassword />
       }
     ],
   },
