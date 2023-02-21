@@ -9,7 +9,7 @@ function Product() {
         <div className="home" >
             <h1>Prodotto</h1>
             <NavLink className="add-product" to='/newproduct'>
-                <h1> Aggiungi prodotto </h1>
+            <div className="addProduct"> <h2 style={{ color: "#000"}}> Add Product </h2> </div>
             </NavLink>
             <div>
                 <div>
@@ -20,4 +20,6 @@ function Product() {
     )
 }
 export default Product;
+
+
 
