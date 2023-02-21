@@ -24,7 +24,7 @@ const AppLayout = () => (
 
 const queryClient = new QueryClient();
 
-const router = createBrowserRouter([
+const router = createBrowserRouter([ 
   {
     element: <AppLayout />,
     children: [
