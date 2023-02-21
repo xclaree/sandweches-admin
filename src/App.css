@@ -254,3 +254,107 @@ label > div {
   display: flex;
   align-items: center;
 }
+
+.infoValoriNutrizionali{
+  display: flex;
+  height: 240px;
+  width: 540px;
+  flex-wrap: wrap;
+  writing-mode: horizontal-tb; /* Can be changed in the live sample */
+  direction: ltr; /* Can be changed in the live sample */
+  place-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 20%;
+
+}
+
+.infoKcal{
+align-items: center;
+position: fixed;
+width: 135px;
+justify-content: center;
+left: 44%;
+bottom: 25%;
+}
+
+.infoFat{
+align-items: center;
+position: fixed;
+width: 135px;
+justify-content: center;
+left: 50%;
+bottom: 25%;
+
+}
+.infoSaturedFat{
+align-items: center;
+position: fixed;
+width: 135px;
+justify-content: center;
+left: 56%;
+bottom: 25%;
+
+
+}
+.infoCarbohydrate{
+  align-items: center;
+  position: fixed;
+  width: 135px;
+  justify-content: center;
+  left: 64%;
+  bottom: 25%;
+
+}
+
+.infoSugar{
+  align-items: center;
+  position: fixed;
+  width: 135px;
+  justify-content: center;
+  bottom: 15%;
+  left: 44%;
+
+}
+.infoProtein{
+  align-items: center;
+  position: fixed;
+  width: 135px;
+  justify-content: center;
+  bottom: 15%;
+  left: 50%;
+
+}
+.infoFiber{
+  align-items: center;
+  position: fixed;
+  width: 135px;
+  justify-content: center;
+  bottom: 15%;
+  left: 56%;
+
+}
+.infoSalt{
+  align-items: center;
+  position: fixed;
+  width: 135px;
+  justify-content: center; 
+   bottom: 15%;
+   left: 64%;
+
+}
+.lbNutritionalValues{
+  position: fixed;
+  left: 51%;
+  bottom: 35%;
+}
+
+.addProduct{
+  position: fixed;
+  top: 7%;
+  right: 10%;
+}
+.addIngredient{
+  position: fixed;
+  top: 45%;
+}

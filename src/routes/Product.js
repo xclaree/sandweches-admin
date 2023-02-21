@@ -7,9 +7,9 @@ import App from './NewProduct';
 function Product() {
     return (
         <div className="home" >
-            <h1>Product</h1>
+            <h1>Prodotto</h1>
             <NavLink className="add-product" to='/newproduct'>
-                <h1> Add Product </h1>
+                <h1> Aggiungi prodotto </h1>
             </NavLink>
             <div>
                 <div>
