@@ -255,108 +255,41 @@ label > div {
   align-items: center;
 }
 
-.infoValoriNutrizionali{
+.form-container {
   display: flex;
-  height: 240px;
-  width: 540px;
-  flex-wrap: wrap;
-  writing-mode: horizontal-tb; /* Can be changed in the live sample */
-  direction: ltr; /* Can be changed in the live sample */
-  place-content: space-around;
-  align-items: center;
-  position: fixed;
-  bottom: 20%;
-
+  margin-top: 20px;
+  width: 300px;
+  width: 100%;
+  text-align: left;
+  align-items: left;
+  justify-content: left;
+  font-weight: 400;
+  font-size: 1rem;
 }
 
-.infoKcal{
-align-items: center;
-position: fixed;
-width: 135px;
-justify-content: center;
-left: 44%;
-bottom: 25%;
+.form-container input, textarea, select, button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
 }
 
-.infoFat{
-align-items: center;
-position: fixed;
-width: 135px;
-justify-content: center;
-left: 50%;
-bottom: 25%;
-
-}
-.infoSaturedFat{
-align-items: center;
-position: fixed;
-width: 135px;
-justify-content: center;
-left: 56%;
-bottom: 25%;
-
-
-}
-.infoCarbohydrate{
-  align-items: center;
-  position: fixed;
-  width: 135px;
-  justify-content: center;
-  left: 64%;
-  bottom: 25%;
-
+.btn-form {
+  width: max-content;
+  border-radius: 100px;
+  margin-right: 5px;
 }
 
-.infoSugar{
-  align-items: center;
-  position: fixed;
-  width: 135px;
-  justify-content: center;
-  bottom: 15%;
-  left: 44%;
-
-}
-.infoProtein{
-  align-items: center;
-  position: fixed;
-  width: 135px;
-  justify-content: center;
-  bottom: 15%;
-  left: 50%;
-
-}
-.infoFiber{
-  align-items: center;
-  position: fixed;
-  width: 135px;
-  justify-content: center;
-  bottom: 15%;
-  left: 56%;
-
-}
-.infoSalt{
-  align-items: center;
-  position: fixed;
-  width: 135px;
-  justify-content: center; 
-   bottom: 15%;
-   left: 64%;
-
-}
-.lbNutritionalValues{
-  position: fixed;
-  left: 51%;
-  bottom: 35%;
+.nutritional-values {
+  display: flex;
+  margin-top: 10px;
 }
 
-.addProduct{
-  position: fixed;
-  top: 7%;
-  right: 10%;
+.nutritional-values label {
+  margin-right: 80px;
 }
-.addIngredient{
-  position: fixed;
-  top: 45%;
+
+.nutritional-values input {
+  width: 100px;
 }
 
 .long-text-container {
@@ -372,4 +305,15 @@ bottom: 25%;
   font-weight: 400;
   background-color: #fff6e3;
   color: #000;
+}
+
+.submit {
+  margin-top: 50px;
+  width: 90%;
+  align-items: left;
+  justify-content: left;
+  width: 150px;
+  height: 50px;
+  border-radius: 80px;
+  font-weight: bold;
 }
