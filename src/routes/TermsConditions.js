@@ -7,7 +7,7 @@ function TermsConditions() {
       <div className="home">
         <h1>Termini e Condizioni</h1>
         <div className="long-text-container">
-          <h1>
+          <a>
             Informativa per il trattamento dei dati personali ai sensi dell’art.
             13 del Regolamento UE N. 2016/679 e art. 13 D.lgs. 196/2003 Gentile
             Utente, La informiamo, ai sensi dell’art. 13 Regolamento UE n.
@@ -170,8 +170,8 @@ function TermsConditions() {
             tramite di un incaricato, alla quale sarà fornito idoneo riscontro
             senza ritardo; La richiesta rivolta può essere trasmessa anche
             mediante lettera raccomandata o posta elettronica ai recapiti sopra
-            indicati.{" "}
-          </h1>
+            indicati.
+          </a>
         </div>
       </div>
     </>
