@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import '../App.css';
 import ProductPopup from './ProductPopup';
+import { getArchiveProduct } from "../api/prova";
+import { useQuery, useMutation } from "@tanstack/react-query";
+
+
 
 const options = ["Modifica Prodotto", "Elimina Prodotto"];
 
@@ -17,6 +22,8 @@ function GetColorStatus(status){
   }
   return 'red';
 }
+
+
 
 const items = [   //sarà il risultato della API
 
@@ -114,6 +121,13 @@ const items = [   //sarà il risultato della API
 ];
 
 const ProductTable = () => {
+  const productQuery = useQuery({
+    queryKey: ["products"],
+    queryFn: (obj) => {
+        console.log(obj);
+      return getArchiveProduct()
+    }                               
+  }) 
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(options[1]);
 
@@ -129,15 +143,6 @@ const ProductTable = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false); //METTI TRUE SE LA API VA
 
-  useEffect(() => {
-    axios
-      .get("http://localhost/evomatic/API/order/GetArchiveOrder.php")
-      .then((res) => {
-        setData(res.data);
-        setLoading(false);
-      })
-      .catch((err) => console.error(err));
-  }, []);
 
   return loading ? (
     <div>
@@ -169,11 +174,10 @@ const ProductTable = () => {
           </tr>
         </thead>
         <tbody>
-          {items.map((item, index) => (
-            <tr key={index}>
-              <td>{item.name}</td>
-              <td>{item.price}</td>
-              <td style={{color: GetColorStatus(item.status), fontWeight: '600'}}>{item.status.toUpperCase()}</td>
+        { productQuery.data?.map( product=>(
+            <tr key={product.id}>
+              <td> {product.name}</td>
+              <td>{product.price}</td>
               <td>
                 <IconButton onClick={handleClickOpen}>
                   <MoreVertIcon />
@@ -193,3 +197,4 @@ const ProductTable = () => {
 };
 
 export default ProductTable;
+
