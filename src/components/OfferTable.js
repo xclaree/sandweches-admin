@@ -4,6 +4,8 @@ import { IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import '../App.css';
 import OfferPopup from './OfferPopup';
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { getArchiveOffer } from "../api/prova";
 
 const options = ["Modifica Offerta", "Elimina Offerta"];
 
@@ -18,102 +20,16 @@ function GetColorStatus(status){
   return 'red';
 }
 
-const items = [   //sarà il risultato della API
-
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },
-    {
-        name: "Panino con il prosciutto",
-        price: "$20",
-        status: "attivo",
-
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-       
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },{
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },{
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    }
-];
 
 const OfferTable = () => {
+  const offerQuery = useQuery({
+    queryKey: ["offer"],
+    queryFn: (obj) => {
+        console.log(obj);
+      return getArchiveOffer()
+    }                               
+  })
+
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(options[1]);
 
@@ -127,17 +43,8 @@ const OfferTable = () => {
   };
 
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false); //METTI TRUE SE LA API VA
+  const [loading, setLoading] = useState(false); //METTI TRUE SE LA API VA riguardare se bisogna mettere il true perchè e  va messo c'è un caricamento infinito e non mostra i dati nella tabella
 
-  useEffect(() => {
-    axios
-      .get("http://localhost/evomatic/API/order/GetArchiveOrder.php")
-      .then((res) => {
-        setData(res.data);
-        setLoading(false);
-      })
-      .catch((err) => console.error(err));
-  }, []);
 
   return loading ? (
     <div>
@@ -165,15 +72,17 @@ const OfferTable = () => {
           <tr>
           <th>Nome</th>
             <th>Prezzo</th>
-             <th>Stato</th>
+            <th>Data inizio</th>
+             <th>Data fine</th>
           </tr>
         </thead>
         <tbody>
-          {items.map((item, index) => (
-            <tr key={index}>
-              <td>{item.name}</td>
-              <td>{item.price}</td>
-              <td style={{color: GetColorStatus(item.status), fontWeight: '600'}}>{item.status.toUpperCase()}</td>
+        { offerQuery.data?.map( offer=>(
+            <tr key={offer.id}>
+              <td> {offer.name}</td>
+              <td>{offer.price}</td>
+              <td> {offer.start}</td>
+              <td>{offer.expiry}</td>
               <td>
                 <IconButton onClick={handleClickOpen}>
                   <MoreVertIcon />
@@ -193,3 +102,4 @@ const OfferTable = () => {
 };
 
 export default OfferTable;
+
