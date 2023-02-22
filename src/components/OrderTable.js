@@ -136,8 +136,6 @@ const OrderData = () => {
     return <a>Errore nella visualizzazione degli ordini, riprova più tardi</a> //mai far vedere l'errore, piuttosto lo mettiamo in log
   }
 
-  let data;
-
   return (
     <QueryClientProvider client={queryClient}>
       {isLoading ? (

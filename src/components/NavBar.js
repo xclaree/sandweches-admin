@@ -4,6 +4,7 @@ import { NavBarData } from './NavBarData';
 import '../App.css';
 import { IconContext } from "react-icons";
 import logo from './logo.png';
+import Login from "./../routes/Login"
 
 function NavBar() {
     

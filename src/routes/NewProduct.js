@@ -4,11 +4,11 @@ import "../App.css";
 import { ScrollView, View, Text } from "react-native";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { getIngredient } from "../api/prova";
-import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 const categories = ["Panini", "Piadine", "Bevande"]; //API QUI
 
-const ingredients = [ //API QUI
+const ingredients = [
+  //API QUI
   "Pane",
   "Prosciutto",
   "Salame",
@@ -73,7 +73,11 @@ function NewProduct() {
   };
 
   const handleQuantityIncrement = () => {
-    setQuantity(quantity + 1);
+    if (quantity == 99) {
+      setQuantity(99);
+    } else {
+      setQuantity(quantity + 1);
+    }
   };
 
   const handleQuantityDecrement = () => {
@@ -124,7 +128,7 @@ function NewProduct() {
       <div className="home">
         <h1>Aggiungi prodotto</h1>
         <form onSubmit={handleSubmit}>
-          <div className="form-container">
+          <div className="form-container" style={{ display: "flex" }}>
             <div>
               <label>
                 Nome prodotto:
@@ -168,12 +172,6 @@ function NewProduct() {
               <label>
                 Quantità:
                 <div>
-                  <button
-                    className="btn-form"
-                    onClick={handleQuantityIncrement}
-                  >
-                    +
-                  </button>
                   <input
                     type="number"
                     min="0"
@@ -184,6 +182,15 @@ function NewProduct() {
                   />
 
                   <button
+                    style={{ width: "40px", fontWeight: "bold" }}
+                    className="btn-form"
+                    onClick={handleQuantityIncrement}
+                  >
+                    +
+                  </button>
+
+                  <button
+                    style={{ width: "40px", fontWeight: "bold" }}
                     className="btn-form"
                     onClick={handleQuantityDecrement}
                   >
@@ -204,22 +211,28 @@ function NewProduct() {
                     placeholder="Inserire una breve descrizione del prodotto"
                   />
                 </label>
-                <span style={{ width: "100px"}}></span>
+                <span style={{ width: "100px" }}></span>
                 <div>
-                <a>Scegli ingredienti</a>
-                <div style={{ height: "130px", width: "200px", overflowY: "scroll" }}>
-                  {ingredients.map((ingredient, index) => (
-                    <div key={index}>
-                      <input
-                        type="checkbox"
-                        checked={selectedOptions.includes(index)}
-                        onChange={() => handleIngredientClick(index)}
-                      />
-                      {ingredient}
-                    </div>
-                  ))}
-                  {/* <p>Selected options indexes: {selectedOptions.join(", ")}</p> */}
-                </div>
+                  <a>Scegli ingredienti</a>
+                  <div
+                    style={{
+                      height: "130px",
+                      width: "200px",
+                      overflowY: "scroll",
+                    }}
+                  >
+                    {ingredients.map((ingredient, index) => (
+                      <div key={index}>
+                        <input
+                          type="checkbox"
+                          checked={selectedOptions.includes(index)}
+                          onChange={() => handleIngredientClick(index)}
+                        />
+                        {ingredient}
+                      </div>
+                    ))}
+                    {/* <p>Selected options indexes: {selectedOptions.join(", ")}</p> */}
+                  </div>
                 </div>
               </div>
               <span></span>
@@ -311,7 +324,7 @@ function NewProduct() {
               </div>
             </div>
           </div>
-          <button className="submit">Aggiungi</button>
+          <button className="submit" type="submit">Aggiungi</button>
         </form>
       </div>
     </>
