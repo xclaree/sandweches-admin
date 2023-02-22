@@ -38,3 +38,15 @@ export function setLogin(email, password) {
     })
     .then((res) => res.data); //ritorna l'id della persona
 }
+
+export function getArchiveProduct(){
+  return axios
+  .get("https://paninara.claudiodressadore.net/evomatic/API/product/getArchiveProductUnfiltered.php")
+  .then(res=>res.data)
+}
+
+export function getArchiveOffer(){
+  return axios
+  .get("https://paninara.claudiodressadore.net/evomatic/API/offer/getArchiveOffer.php")
+  .then(res=>res.data)
+}
