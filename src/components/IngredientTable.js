@@ -4,91 +4,20 @@ import { IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import '../App.css';
 import IngredientPopup from './IngredientPopup';
+import { useQuery, useMutation } from "@tanstack/react-query";
+import {getIngredient} from "../api/prova";
 
 const options = ["Modifica ingrediente", "Elimina ingrediente"];
 
 
-const items = [   //sarà il risultato della API
-
-    {
-        name: "Mortadella",
-        allergen: "Pistacchio",
-    },
-    {
-        name: "Prosciutto",
-        allergen: "Pistacchio",
-
-    },
-    {
-        name: "Salame",
-        allergen: "Pepe",
-    },
-    {
-        name: "Prosciutto",
-        allergen: "Pistacchio",
-       
-    },
-    {
-        name: "Prosciutto",
-        allergen: "Pistacchio",
-
-    },
-    {
-        name: "Prosciutto",
-        allergen: "Pistacchio",
-
-    },
-    {
-        name: "Prosciutto",
-        allergen: "Pistacchio",
-
-    },
-    {
-        name: "Prosciutto",
-        allergen: "Pistacchio",
-
-    },
-    {
-        name: "Prosciutto",
-        allergen: "Pistacchio",
-
-    },
-    {
-        name: "Prosciutto",
-        allergen: "Pistacchio",
-
-    },
-    {
-        name: "Prosciutto",
-        allergen: "Pistacchio",
-
-    },
-    {
-        name: "Prosciutto",
-        allergen: "Pistacchio",
-
-    },
-    {
-        name: "Prosciutto",
-        allergen: "Pistacchio",
-
-    },
-    {
-        name: "Prosciutto",
-        allergen: "Pistacchio",
-
-    },{
-        name: "Prosciutto",
-        allergen: "Pistacchio",
-
-    },{
-        name: "Prosciutto",
-        allergen: "Pistacchio",
-
-    }
-];
-
 const IngredientTable = () => {
+  const ingredientsQuery = useQuery({
+    queryKey: ["ingredients"],
+    queryFn: (obj) => {
+        console.log(obj);
+      return getIngredient()
+    }                               
+  }) 
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(options[1]);
 
@@ -102,17 +31,7 @@ const IngredientTable = () => {
   };
 
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false); //METTI TRUE SE LA API VA
-
-  useEffect(() => {
-    axios
-      .get("http://localhost/evomatic/API/order/GetArchiveOrder.php")
-      .then((res) => {
-        setData(res.data);
-        setLoading(false);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+  const [loading, setLoading] = useState(false); //METTI TRUE SE LA API VA riguardare se bisogna mettere il true perchè e  va messo c'è un caricamento infinito e non mostra i dati nella tabella
 
   return loading ? (
     <div>
@@ -120,7 +39,7 @@ const IngredientTable = () => {
         <thead>
           <tr>
             <th>Nome</th>
-            <th>Allergeni</th>
+            <th>Descrizione</th>
           </tr>
         </thead>
         <tbody>
@@ -142,10 +61,10 @@ const IngredientTable = () => {
           </tr>
         </thead>
         <tbody>
-          {items.map((item, index) => (
-            <tr key={index}>
-              <td>{item.name}</td>
-              <td>{item.allergen}</td>
+          { ingredientsQuery.data?.map( ingredient=>(
+            <tr key={ingredient.id}>
+              <td> {ingredient.name}</td>
+              <td>{ingredient.description}</td>
               <td>
                 <IconButton onClick={handleClickOpen}>
                   <MoreVertIcon />
@@ -165,3 +84,14 @@ const IngredientTable = () => {
 };
 
 export default IngredientTable;
+/*          {items.map((item, index) => (
+            <tr key={index}>
+              <td>{item.name}</td>
+              <td>{item.allergen}</td>
+              <td>
+                <IconButton onClick={handleClickOpen}>
+                  <MoreVertIcon />
+                </IconButton>
+              </td>
+            </tr>
+          ))}*/ 
