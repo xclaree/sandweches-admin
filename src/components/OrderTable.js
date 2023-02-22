@@ -4,6 +4,7 @@ import { IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import "../App.css";
 import OrderPopup from "./OrderPopup";
+import { getArchiveOrder } from "../api/prova";
 import {
   useQuery,
   QueryClient,
@@ -107,20 +108,11 @@ const items = [
 ];
 
 const queryClient = new QueryClient();
-const isLoading = false; //se vuoi prvare le api metti TRUE
-
-function GetArchiveOrder() {
-  return axios
-    .get("https://paninara.claudiodressadore.net/evomatic/API/order/GetArchiveOrder.php")
-    .then((response) => {
-      isLoading = false;
-      return response.data
-    });
-}
 
 const OrderData = () => {
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(options[1]);
+  const [isLoading, setLoading] = useState(true); //se vuoi prvare le api metti TRUE
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -135,13 +127,16 @@ const OrderData = () => {
     queryKey: ["order"],
     queryFn: (obj) => {
       console.log(obj)
-      return GetArchiveOrder()
+      setLoading(false);
+      return getArchiveOrder()
     }
   })
 
   if(ArchiveOrderQuery.status === "error"){
-    return <a>'Errore: ' + {JSON.stringify(ArchiveOrderQuery.error)}</a>
+    return <a>Errore nella visualizzazione degli ordini, riprova più tardi</a> //mai far vedere l'errore, piuttosto lo mettiamo in log
   }
+
+  let data;
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -176,7 +171,7 @@ const OrderData = () => {
               </tr>
             </thead>
             <tbody>
-              {items.map((item) => ( //se vuoi provare le api metti ArchiveOrderQuery.data.map
+              {ArchiveOrderQuery.data && ArchiveOrderQuery.data.map((item) => ( //se vuoi provare le api metti ArchiveOrderQuery.data.map
                   <tr key={item.id}>
                     <td
                       style={{
