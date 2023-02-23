@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -23,103 +22,6 @@ function GetColorStatus(status){
   return 'red';
 }
 
-
-
-const items = [   //sarà il risultato della API
-
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },
-    {
-        name: "Panino con il prosciutto",
-        price: "$20",
-        status: "attivo",
-
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-       
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },
-    {
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },{
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    },{
-      name: "Panino con il salame",
-      price: "$20",
-      status: "non attivo",
-
-    }
-];
-
 const ProductTable = () => {
   const productQuery = useQuery({
     queryKey: ["products"],
@@ -142,6 +44,9 @@ const ProductTable = () => {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false); //METTI TRUE SE LA API VA
+  let productid=[];
+  let productname=[];
+
 
 
   return loading ? (
@@ -175,9 +80,11 @@ const ProductTable = () => {
         </thead>
         <tbody>
         { productQuery.data?.map( product=>(
-            <tr key={product.id}>
+            <tr key={product.id} {...productid=product.id} {...productname=product.name}>
               <td> {product.name}</td>
               <td>{product.price}</td>
+              {console.log(productid)}
+              {console.log(productname)}
               <td>
                 <IconButton onClick={handleClickOpen}>
                   <MoreVertIcon />
@@ -191,10 +98,11 @@ const ProductTable = () => {
             selectedValue={selectedValue}
             open={open}
             onClose={handleClose}
+            id={productid}
+            name={productname}
           />
     </div>
   );
 };
 
 export default ProductTable;
-
