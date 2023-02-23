@@ -6,11 +6,21 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Dialog from "@mui/material/Dialog";
 import "../App.css";
+import { useState } from "react";
+import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
+const options = ["Modifica Prodotto","Dettagli Prodotto"];
 
-const options = ["Modifica Prodotto", "Elimina Prodotto"];
 
-function ProductPopup(props) {
+function ProductPopup(props, id, name) {
+  const [selectedOption, setSelectedOption] = useState(null);
   const { onClose, selectedValue, open } = props;
+  const [selectedRowIndex, setSelectedRowIndex] = useState(null);
+
+  const handleRowClick = (index) => {
+    setSelectedRowIndex(index);
+    console.log("aaaaaaaa");
+    console.log(index);
+  };
 
   const handleClose = () => {
     onClose(selectedValue);
@@ -19,6 +29,10 @@ function ProductPopup(props) {
   const handleListItemClick = (value) => {
     onClose(value);
   };
+
+  function handleOptionSelect(option) {
+    setSelectedOption(option);
+  }
 
   return (
     <Dialog
@@ -37,14 +51,15 @@ function ProductPopup(props) {
     >
       <List sx={{ pt: 0 }}>
         {options.map((item) => (
-          <ListItem>
+          <NavLink to = {{ pathname: "/"+ item, state:{id,name}}}>
+          <ListItem onClick={()=> handleRowClick()}>***********************
             <ListItemButton
               onClick={() => handleListItemClick(item)}
-              key={item}
-            >
+              key={item}>
               <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
+          </NavLink>
         ))}
       </List>
     </Dialog>
@@ -55,6 +70,9 @@ ProductPopup.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   selectedValue: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default ProductPopup;
+/**react data gread */
