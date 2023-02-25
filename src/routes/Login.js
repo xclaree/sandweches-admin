@@ -10,11 +10,26 @@ import {
 } from "@tanstack/react-query";
 import PropTypes from "prop-types";
 
-function Login({ setToken }) {
-  const [isAuth, setAuth] = useState(0); //isAuth è un intero e corrisponde all'id della persona autenticata
+function Login(props) {
+  // const [isAuth, setAuth] = useState(0); //isAuth è un intero e corrisponde all'id della persona autenticata
   //isAuth = 0 quando non si è autenticati
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const setToken = props;
+
+  const setLoginQuery = useQuery({
+    queryKey: ["login"],
+    queryFn: (obj) => {
+      console.log(obj);
+      return setLogin(email, password);
+    },
+  });
+
+  const handleSubmit = async () => {
+    const token = await setLoginQuery(email, password);
+    setToken(token);
+    window.location.reload();
+  };
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -23,24 +38,6 @@ function Login({ setToken }) {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
-
-//   const setLogin = useQuery({
-//     queryKey: ["login"],
-//     queryFn: (obj) => {
-//       console.log(obj);
-//       return setLogin(email, password);
-//     },
-//   });
-
-//   if (setLogin.status === "error") {
-//     return <a>Errore, riprova più tardi</a>; //mai far vedere l'errore, piuttosto lo mettiamo in log
-//   }
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     const token = setLogin; //mmmmm pacco tutto
-//     setToken(token);
-//   };
 
   return (
     <div className="home">
