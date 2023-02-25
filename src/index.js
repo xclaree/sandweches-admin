@@ -22,10 +22,17 @@ import { useState } from "react";
 function App() {
   const [token, setToken] = useState(0);
 
-  if (token != 0) { //metti token == 0 er vedere il login
-    return <Login 
-    setToken={token}
-     />;
+  if (token == 0) { //metti token == 0 per vedere il login
+    return (
+      <>
+       <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Login setToken={setToken}/>} />
+              <Route path="/resetpassword" element={<ResetPassword />} />
+            </Routes>
+      </BrowserRouter>
+    </>
+     );
   }
 
   return (
@@ -33,7 +40,7 @@ function App() {
       <BrowserRouter>
             <NavBar />
             <Routes>
-              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Home />} />
               <Route path="/product" element={<Product />} />
               <Route path="/offer" element={<Offer />} />
               <Route path="/ingredient" element={<Ingredient />} />
@@ -47,7 +54,6 @@ function App() {
 }
 
 export default App;
-
 
 const clientQuery = new QueryClient();
 

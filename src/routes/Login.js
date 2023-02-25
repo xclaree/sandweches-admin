@@ -7,13 +7,14 @@ import {
   useQuery,
 } from "@tanstack/react-query";
 import PropTypes from "prop-types";
+import AppCode from '../index';
 
-function Login(props) {
+function Login({setToken}) {
   // const [isAuth, setAuth] = useState(0); //isAuth è un intero e corrisponde all'id della persona autenticata
   //isAuth = 0 quando non si è autenticati
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {setToken} = props;
+
 
   const setLoginQuery = useQuery({
     queryKey: ["login"],
@@ -72,9 +73,9 @@ function Login(props) {
           </label>
         </div>
         <div style={{ display: "inline", fontSize: "1rem", fontWeight: "400" }}>
-          <NavLink to="/home">
-            <button className="submit" type="submit">Accedi</button>
-          </NavLink>
+          {/* <NavLink to="/home"> */}
+            <button className="submit" type="submit" onClick={handleSubmit}>Accedi</button>
+          {/* </NavLink> */}
           <span></span>
           <NavLink to="/resetpassword">Ho dimenticato la password</NavLink>
         </div>
@@ -84,7 +85,7 @@ function Login(props) {
 }
 
 Login.propTypes = {
-  setToken: PropTypes.func.isRequired,
-};
+  setToken: PropTypes.func.isRequired
+}
 
 export default Login;

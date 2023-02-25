@@ -8,7 +8,7 @@ export const NavBarData = [
     
     {
         title: "Home",
-        path: "/home",
+        path: "/",
         icon: <AiIcons.AiFillHome size="25px"/>,
         cName: "nav-text a",
 
