@@ -9,14 +9,12 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
-import { Modal } from "@mui/material";
+import { Modal } from '@mui/material';
 import "../App.css";
-import { NavLink } from "react-router-dom";
-import OrderDetailsPopup from "./OrderDetailsPopup";
 
 const options = ["Dettagli ordine", "Modifica stato", "Elimina ordine"];
 
-function OrderPopup(props) {
+function OrderDetailsPopup(props) {
   const { onClose, selectedValue, open } = props;
 
   const handleClose = () => {
@@ -25,35 +23,33 @@ function OrderPopup(props) {
 
   const handleListItemClick = (value) => {
     onClose(value);
+
   };
 
   return (
     <Dialog
       onClose={handleClose}
       open={open}
-      sx={{
-        "& .MuiBackdrop-root": {
-          backgroundColor: "transparent",
-          borderRadius: "60px",
-        },
-        "& .MuiDialog-container": {
-          alignItems: "flex-start",
-        },
-        boxShadow: "none",
+      sx={{ '& .MuiBackdrop-root': { backgroundColor: 'transparent', borderRadius: '60px' },
+      "& .MuiDialog-container": {
+        alignItems: "flex-start"
+      }, boxShadow: 'none'
       }}
       PaperProps={{
-        style: { borderRadius: 20, position: "initial" },
+        style: { borderRadius: 20, position: 'initial' }   
       }}
+      
+      
     >
       <List sx={{ pt: 0 }}>
         {options.map((item) => (
           <ListItem>
-              <ListItemButton
-                onClick={() => handleListItemClick(item)}
-                key={item}
-              >
-                <ListItemText primary={item} />
-              </ListItemButton>
+            <ListItemButton
+              onClick={() => handleListItemClick(item)}
+              key={item}
+            >
+              <ListItemText primary={item} />
+            </ListItemButton>
           </ListItem>
         ))}
       </List>
@@ -61,10 +57,10 @@ function OrderPopup(props) {
   );
 }
 
-OrderPopup.propTypes = {
+OrderDetailsPopup.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   selectedValue: PropTypes.string.isRequired,
 };
 
-export default OrderPopup;
+export default OrderDetailsPopup;

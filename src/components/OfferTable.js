@@ -102,4 +102,3 @@ const OfferTable = () => {
 };
 
 export default OfferTable;
-

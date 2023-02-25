@@ -5,8 +5,6 @@ import "../App.css";
 import { setLogin } from "../api/prova";
 import {
   useQuery,
-  QueryClient,
-  QueryClientProvider,
 } from "@tanstack/react-query";
 import PropTypes from "prop-types";
 
@@ -15,7 +13,7 @@ function Login(props) {
   //isAuth = 0 quando non si è autenticati
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const setToken = props;
+  const {setToken} = props;
 
   const setLoginQuery = useQuery({
     queryKey: ["login"],

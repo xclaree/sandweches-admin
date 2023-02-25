@@ -22,8 +22,10 @@ import { useState } from "react";
 function App() {
   const [token, setToken] = useState(0);
 
-  if (token == 0) {
-    return <Login setToken={token} />;
+  if (token != 0) { //metti token == 0 er vedere il login
+    return <Login 
+    setToken={token}
+     />;
   }
 
   return (
@@ -31,12 +33,13 @@ function App() {
       <BrowserRouter>
             <NavBar />
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
               <Route path="/product" element={<Product />} />
               <Route path="/offer" element={<Offer />} />
               <Route path="/ingredient" element={<Ingredient />} />
               <Route path="/profile" element={<Profile />}/>
               <Route path="/newproduct" element={<NewProduct />} />
+              <Route path="/termsconditions" element={<TermsConditions />} />
             </Routes>
       </BrowserRouter>
     </>
