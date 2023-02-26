@@ -7,6 +7,7 @@ export function getIngredient() {
     )
     .then((res) => res.data);
 }
+
 export function getProduct(id) {
   return axios
     .get(
@@ -30,12 +31,9 @@ export function getArchiveOrder() {
 
 export function setLogin(email, password) {
   return axios
-    .get("https://paninara.claudiodressadore.net/evomatic/API/user/login.php", {
-      params: {
-        email: email,
-        password: password,
-      },
-    })
+    .post("https://paninara.claudiodressadore.net/evomatic/API/user/login.php",
+    {email: email, password: password}
+    )
     .then((res) => res.data); //ritorna l'id della persona
 }
 

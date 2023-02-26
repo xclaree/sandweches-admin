@@ -5,6 +5,12 @@ import NewPasswordPopup from"../components/NewPasswordPopup";
 import { Link, NavLink } from 'react-router-dom';
 
 function Profile(){
+
+const handleLogout = () => {
+    window.location.reload();
+  };
+
+
     return(
         <div className="home">
             <h1>Profile</h1>
@@ -36,15 +42,26 @@ function Profile(){
             <div>
               <input type="password" size="40" maxlength="200" className="input_password_user" />
             </div>
-            <div className="termini_condizione_button" >
+            <span></span>
+            <div className="submit-side">
                 <NavLink to="/termsconditions">
-                <h3> Termine e condizioni</h3>
-
+                <button style={{ width: '280px'}}> Termini e condizioni</button>
                 </NavLink>
             </div>
-            <div className="modifica_password_button" onClick={NewPasswordPopup} >
+            <span></span>
+            <div className="submit-side" onClick={NewPasswordPopup}>
+                <button style={{ width: '280px'}}>
                 Modifica Password
+                </button>
             </div>
+            <span></span>
+            {/* <div className="submit-side" onClick={handleLogout}>
+                <NavLink to="/login">
+                <button style={{ width: '280px'}}>
+                Esci dall'account
+                </button>
+                </NavLink>
+            </div> */}
         </div>
     )
 }

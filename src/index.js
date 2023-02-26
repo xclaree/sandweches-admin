@@ -22,7 +22,7 @@ import { useState } from "react";
 function App() {
   const [token, setToken] = useState(0);
 
-  if (token == 0) { //metti token == 0 per vedere il login
+  if (token <= 0) { //metti token == 0 per vedere il login
     return (
       <>
        <BrowserRouter>
