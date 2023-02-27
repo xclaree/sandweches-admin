@@ -32,9 +32,56 @@ const ProductTable = () => {
   }) 
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(options[1]);
+  
+  const [selectId, setSelectId] = useState();
+  const [selectDescription, setselectDescription] = useState();
+  const [selectName, setSselectName] = useState();
+  const [selectPrice, setselectPrice] = useState();
+  const [selectQuantity, setselectQuantity] = useState();
 
-  const handleClickOpen = () => {
+
+
+  let scelta=[];
+  let pquantity=[];
+  let pprice=[];
+  let pdescription=[];
+  let pname=[];
+
+
+
+
+  
+  const handleClickOpen = (id,quantity,description, price, name) => {
+    scelta=id;
+    console.log(`è stato schiacciato la row con index ${scelta}`);
+    handleChangeSelectId(scelta);
+    handleChangeSelectQuantity(quantity);
+    handleChangeSelectDescription(description);
+    handleChangeSelectPrice(price);
+    handleChangeSelectName(name);
     setOpen(true);
+
+  };
+
+  const handleChangeSelectId = (value) =>{
+    setSelectId(value);
+  };
+
+  const handleChangeSelectDescription = (value) =>{
+    setselectDescription(value);
+  };
+
+  const handleChangeSelectName = (value) =>{
+    setSselectName(value);
+  };
+
+
+  const handleChangeSelectPrice = (value) =>{
+    setselectPrice(value);
+  };
+
+  const handleChangeSelectQuantity = (value) =>{
+    setselectQuantity(value);
   };
 
   const handleClose = (value) => {
@@ -44,9 +91,9 @@ const ProductTable = () => {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false); //METTI TRUE SE LA API VA
-  let productid=[];
   let productname=[];
-
+  let cnt=0;
+  let idprodotti=[];
 
 
   return loading ? (
@@ -80,14 +127,14 @@ const ProductTable = () => {
         </thead>
         <tbody>
         { productQuery.data?.map( product=>(
-            <tr key={product.id} {...productid=product.id} {...productname=product.name}>
+            <tr key={product.id} {...idprodotti[cnt]=product.id}{...productname[cnt]=product.name}{...cnt++}>
               <td> {product.name}</td>
-              <td>{product.price}</td>
-              {console.log(productid)}
-              {console.log(productname)}
+              <td>{product.price} </td>
               <td>
-                <IconButton onClick={handleClickOpen}>
-                  <MoreVertIcon />
+                <IconButton onClick={()=>{
+                  handleClickOpen(product.id, product.quantity, product.description, product.price, product.name);
+                }}>
+                  <MoreVertIcon/>
                 </IconButton>
               </td>
             </tr>
@@ -98,11 +145,21 @@ const ProductTable = () => {
             selectedValue={selectedValue}
             open={open}
             onClose={handleClose}
-            id={productid}
-            name={productname}
+            selected_id={selectId}
+            selected_name={selectName}
+            selected_quantity={selectQuantity}
+            selected_price={selectPrice}
+            selected_description={selectDescription}
+            {...console.log(`la scelta corrisponde a ${selectId}`)}
+            {...console.log(`la scelta corrisponde a ${selectName}`)}
+            {...console.log(`la scelta corrisponde a ${selectQuantity}`)}
+            {...console.log(`la scelta corrisponde a ${selectDescription}`)}
+            {...console.log(`la scelta corrisponde a ${selectPrice}`)}
+
           />
     </div>
   );
 };
 
 export default ProductTable;
+
