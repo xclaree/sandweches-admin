@@ -1,5 +1,6 @@
 import React from "react";
 import OfferTable from "../components/OfferTable";
+import { NavLink } from "react-router-dom";
 
 function Offer(){
     return (
@@ -9,6 +10,10 @@ function Offer(){
                     <h1>Offer</h1>
                 </div>
                 <span></span>
+                <NavLink to="/newoffer">
+                <div className="addProduct"><h2 style={{ color: "#000"}}> Add Offer </h2> 
+                </div>
+                </NavLink>
                 <div className="offer-list">
                     <div>
                         <OfferTable /> 
