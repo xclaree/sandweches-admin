@@ -5,7 +5,7 @@ import { ScrollView, View, Text } from "react-native";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { getIngredient } from "../api/prova";
 
-const categories = ["Panini", "Piadine", "Bevande"]; //API QUI
+const categories = ["Panino", "Piadina", "Bibita","Snack","Dolce"]; //API QUI
 
 const ingredients = [
   //API QUI
