@@ -32,10 +32,45 @@ const OfferTable = () => {
 
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(options[1]);
+  const [selectId, setSelectId] = useState();
+  const [selectPrice, setselectPrice] = useState();
+  const [selectExpiry, setselectExpiry] = useState();
+  const [selectName, setselectName] = useState();
 
-  const handleClickOpen = () => {
+
+  let scelta=[];
+  let price=[];
+  let expiry=[];
+
+
+
+  const handleClickOpen = (id, price, expiry,name) => {
+    scelta=id;
+    console.log(`è stato schiacciato la offerta con index ${scelta}`);
+    handleChangeSelectId(scelta);
+    handleChanheExpiry(expiry);
+    handleChanhePrice(price);
+    handleChangeSelectName(name);
     setOpen(true);
   };
+
+  const handleChangeSelectName = (value) =>{
+    setselectName(value);
+  };
+
+
+  const handleChangeSelectId = (value) =>{
+    setSelectId(value);
+  };
+
+  const handleChanhePrice = (value)=>{
+    setselectPrice(value);
+  }
+
+  const handleChanheExpiry = (value)=>{
+    setselectExpiry(value);
+  }
+
 
   const handleClose = (value) => {
     setOpen(false);
@@ -84,7 +119,9 @@ const OfferTable = () => {
               <td> {offer.start}</td>
               <td>{offer.expiry}</td>
               <td>
-                <IconButton onClick={handleClickOpen}>
+              <IconButton onClick={()=>{
+                  handleClickOpen(offer.id, offer.price, offer.expiry, offer.name);
+                }}>
                   <MoreVertIcon />
                 </IconButton>
               </td>
@@ -96,6 +133,12 @@ const OfferTable = () => {
             selectedValue={selectedValue}
             open={open}
             onClose={handleClose}
+            selected_id={selectId}
+            selected_price={selectPrice}
+            selected_expiry={selectExpiry}
+            selected_name={selectName}
+
+            {...console.log(`la scelta dell'offerta corrisponde a ${selectId}`)}
           />
     </div>
   );
