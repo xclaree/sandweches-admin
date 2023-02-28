@@ -11,10 +11,9 @@ function Product() {
             <div style={{ display: 'flex', justifyContent: 'space-between'}}>
             <div><h1>Prodotto</h1></div>
             <NavLink to='/newproduct'>
-            <div className="submit-side">
-                <button style={{ width: '180px'}}>
-                Add Product
-                </button>
+            <div className="add-product">
+            <div className="addProduct"> 
+            <h2 style={{ color: "#000"}}> Add Product </h2> </div>
             </div>
             </NavLink>
             </div>
@@ -27,6 +26,8 @@ function Product() {
     )
 }
 export default Product;
+
+
 
 
 
