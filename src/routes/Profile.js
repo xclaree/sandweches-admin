@@ -55,7 +55,7 @@ const handleLogout = () => {
                 </button>
             </div>
             <span></span>
-            {/* <div className="submit-side" onClick={handleLogout}>
+            <div className="submit-side" onClick={handleLogout}>
                 <NavLink to="/login">
                 <button style={{ width: '280px'}}>
                 Esci dall'account
