@@ -12,7 +12,7 @@ import ResetPassword from "./routes/ResetPassword";
 import ProductDetails from"./routes/ProductDetails";
 import { BrowserRouter, Routes, Route, createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import NewIngredient from "./routes/NewIngredient";
-import NewOffer from "./routes/NewOffer";
+// import NewOffer from "./routes/NewOffer";
 import "./App.css";
 import Login from "./routes/Login";
 import {
@@ -21,10 +21,6 @@ import {
 } from "@tanstack/react-query";
 import { useState } from "react";
 import useToken from "./data/token";
-
-
-
-
 
 function App() {
   const { token, setToken } = useToken();
@@ -54,9 +50,8 @@ function App() {
               <Route path="/profile" element={<Profile setToken={setToken}/>}/>
               <Route path="/newproduct" element={<NewProduct />} />
               <Route path="/termsconditions" element={<TermsConditions />} />
-              <Route path="/newingredient"   element={<NewIngredient/>}/>
-              <Route path="/newoffer"   element={<NewOffer/>}/>
-
+              <Route path="/newingredient" element={<NewIngredient/>}/>
+              {/* <Route path="/newoffer" element={<NewOffer/>}/> */}
             </Routes>
       </BrowserRouter>
     </>

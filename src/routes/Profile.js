@@ -4,9 +4,11 @@ import Order from "../components/OrderTable";
 import NewPasswordPopup from"../components/NewPasswordPopup";
 import { Link, NavLink } from 'react-router-dom';
 
-function Profile(){
+function Profile({setToken}){
 
 const handleLogout = () => {
+    setToken(false);
+    localStorage.clear();
     window.location.reload();
   };
 
@@ -56,7 +58,7 @@ const handleLogout = () => {
             </div>
             <span></span>
             <div className="submit-side" onClick={handleLogout}>
-                <NavLink to="/login">
+                <NavLink to="/">
                 <button style={{ width: '280px'}}>
                 Esci dall'account
                 </button>
