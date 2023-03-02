@@ -20,6 +20,7 @@ function Login({ setToken }) {
     localStorage.setItem("surname", user.surname);
     localStorage.setItem("email", user.email);
     window.location.reload();
+    localStorage.reload();
   }
 
 
