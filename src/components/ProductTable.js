@@ -32,9 +32,20 @@ const ProductTable = () => {
   }) 
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(options[1]);
+  const [selectId, setSelectId] = useState();
 
-  const handleClickOpen = () => {
+  let scelta=[];
+  
+  const handleClickOpen = (value) => {
+    scelta=value;
+    console.log(`Ã¨ stato schiacciato la row con index ${scelta}`);
+    handleChangeSelectId(scelta);
     setOpen(true);
+
+  };
+
+  const handleChangeSelectId = (value) =>{
+    setSelectId(value);
   };
 
   const handleClose = (value) => {
@@ -44,9 +55,9 @@ const ProductTable = () => {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false); //METTI TRUE SE LA API VA
-  let productid=[];
   let productname=[];
-
+  let cnt=0;
+  let idprodotti=[];
 
 
   return loading ? (
@@ -80,14 +91,14 @@ const ProductTable = () => {
         </thead>
         <tbody>
         { productQuery.data?.map( product=>(
-            <tr key={product.id} {...productid=product.id} {...productname=product.name}>
+            <tr key={product.id} {...idprodotti[cnt]=product.id}{...productname[cnt]=product.name}{...cnt++}>
               <td> {product.name}</td>
-              <td>{product.price}</td>
-              {console.log(productid)}
-              {console.log(productname)}
+              <td>{product.price} </td>
               <td>
-                <IconButton onClick={handleClickOpen}>
-                  <MoreVertIcon />
+                <IconButton onClick={()=>{
+                  handleClickOpen(product.id);
+                }}>
+                  <MoreVertIcon/>
                 </IconButton>
               </td>
             </tr>
@@ -98,11 +109,12 @@ const ProductTable = () => {
             selectedValue={selectedValue}
             open={open}
             onClose={handleClose}
-            id={productid}
-            name={productname}
+            selected_id={selectId}
+            {...console.log(`la scelta corrisponde a ${selectId}`)}
           />
     </div>
   );
 };
 
 export default ProductTable;
+//{...scelta=productname[cnt--]}

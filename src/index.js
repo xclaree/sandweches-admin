@@ -18,11 +18,12 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { useState } from "react";
+import useToken from "./data/token";
 
 function App() {
-  const [token, setToken] = useState(0);
+  const { token, setToken } = useToken();
 
-  if (token <= 0) { //metti token == 0 per vedere il login
+  if (!token) {
     return (
       <>
        <BrowserRouter>
@@ -44,7 +45,7 @@ function App() {
               <Route path="/product" element={<Product />} />
               <Route path="/offer" element={<Offer />} />
               <Route path="/ingredient" element={<Ingredient />} />
-              <Route path="/profile" element={<Profile />}/>
+              <Route path="/profile" element={<Profile setToken={setToken}/>}/>
               <Route path="/newproduct" element={<NewProduct />} />
               <Route path="/termsconditions" element={<TermsConditions />} />
             </Routes>

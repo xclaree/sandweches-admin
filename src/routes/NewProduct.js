@@ -4,6 +4,7 @@ import "../App.css";
 import { ScrollView, View, Text } from "react-native";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { getIngredient } from "../api/prova";
+import { createProduct } from "../api/prova";
 
 const categories = ["Panini", "Piadine", "Bevande"]; //API QUI
 
@@ -123,6 +124,12 @@ function NewProduct() {
       return getIngredient();
     },
   });
+
+  // async function handleCreateProduct() {
+  //   const result = await createProduct(name, price, description, quantity, category, ingredients, category, nutritional_values)
+  // }
+
+
   return (
     <>
       <div className="home">

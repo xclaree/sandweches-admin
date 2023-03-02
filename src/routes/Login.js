@@ -3,32 +3,27 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "../App.css";
 import { setLogin } from "../api/prova";
-import {
-  useQuery,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
 import PropTypes from "prop-types";
 import AppCode from "../index";
+import { useQuery } from "@tanstack/react-query";
 
 function Login({ setToken }) {
   // const [isAuth, setAuth] = useState(0); //isAuth è un intero e corrisponde all'id della persona autenticata
   //isAuth = 0 quando non si è autenticati
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const queryClient = new QueryClient();
 
-  const setLoginQuery = useQuery({
-    queryKey: ["login"],
-    queryFn: (obj) => {
-      console.log(obj);
-      return setLogin(email, password);
-    },
-  });
+  async function handleLogin() {
+    const user = await setLogin(email, password);
+    console.log(user);
+    setToken(user.token);
+    localStorage.setItem("id", user.id);
+    localStorage.setItem("name", user.name);
+    localStorage.setItem("surname", user.surname);
+    localStorage.setItem("email", user.email);
+    window.location.reload();
+  }
 
-  const handleSubmit = () => {
-    setToken(1);
-  };
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -39,7 +34,6 @@ function Login({ setToken }) {
   };
 
   return (
-    <QueryClientProvider client={queryClient}>
       <div className="home">
         <h1>Login</h1>
         <span></span>
@@ -77,7 +71,7 @@ function Login({ setToken }) {
             style={{ display: "inline", fontSize: "1rem", fontWeight: "400" }}
           >
             {/* <NavLink to="/home"> */}
-            <button className="submit" type="submit" onClick={handleSubmit}>
+            <button className="submit" type="submit" onClick={() => handleLogin()}>
               Accedi
             </button>
             {/* </NavLink> */}
@@ -86,12 +80,7 @@ function Login({ setToken }) {
           </div>
         </div>
       </div>
-    </QueryClientProvider>
   );
 }
-
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired,
-};
 
 export default Login;
