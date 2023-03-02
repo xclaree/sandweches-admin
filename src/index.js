@@ -24,7 +24,6 @@ import useToken from "./data/token";
 
 function App() {
   const { token, setToken } = useToken();
-
   if (!token) {
     return (
       <>
