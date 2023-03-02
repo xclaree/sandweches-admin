@@ -8,8 +8,6 @@ import AppCode from "../index";
 import { useQuery } from "@tanstack/react-query";
 
 function Login({ setToken }) {
-  // const [isAuth, setAuth] = useState(0); //isAuth è un intero e corrisponde all'id della persona autenticata
-  //isAuth = 0 quando non si è autenticati
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

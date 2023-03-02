@@ -9,8 +9,8 @@ const queryClient = new QueryClient();
 function Profile({setToken}) {
 
   const handleLogout = () => {
-    setToken(false);
     localStorage.clear();
+    setToken(false);
     window.location.reload();
   };
 
@@ -30,12 +30,12 @@ function Profile({setToken}) {
               />
             </label>
             <span></span>
-            <label>
-              Prezzo:
+            <label style={{ pointerEvents: 'none'}}>
+              email
               <input
-                type="number"
-                step="0.01"
-                style={{ width: "150px" }}
+                 style={{ width: "400px" }}
+                 type="text"
+                value={localStorage.getItem('email')}
               />
             </label>
             <span></span>

@@ -1,7 +1,5 @@
 import axios from "axios";
 
-
-
 export function getProduct(id) {
   return axios
     .get(
@@ -32,94 +30,106 @@ export function setLogin(email, password) {
     .then((res) => res.data);
 }
 
-
-
-
-
-export function getIngredient(){
-    return axios
-    .get("https://paninara.claudiodressadore.net/evomatic/API/product/ingredient/getArchiveIngredient.php")
-    .then(res=> res.data)
-}
-
-
-    export function getArchiveOrder(){
-        return axios
-        .get("https://paninara.claudiodressadore.net/evomatic/API/order/getArchiveOrder.php")
-        .then(res=> res.data)
-    }
-
-    export function getArchiveProduct(){
-        return axios
-        .get("https://paninara.claudiodressadore.net/evomatic/API/product/getArchiveProductUnfiltered.php")
-        .then(res=>res.data)
-    }
-
-export function getArchiveOffer(){
+export function getIngredient() {
   return axios
-  .get("https://paninara.claudiodressadore.net/evomatic/API/offer/getArchiveOffer.php")
-  .then(res=>res.data)
+    .get(
+      "https://paninara.claudiodressadore.net/evomatic/API/product/ingredient/getArchiveIngredient.php"
+    )
+    .then((res) => res.data);
 }
 
-    export function getProductAllergens(id){
-        return axios
-        .get("https://paninara.claudiodressadore.net/evomatic/API/product/getProductAllergens.php/"+id,
-        {
-          headers: 
-          {
-            "Access-Control-Allow-Origin": "*",
-          },
-        })
-        .then(res=> res.data)
-    }
-    export function getNutritionalValue(id){
-      return axios
-      .get("https://paninara.claudiodressadore.net/evomatic/API/product/getNutritionalValue.php/"+id,
+export function getArchiveOrder() {
+  return axios
+    .get(
+      "https://paninara.claudiodressadore.net/evomatic/API/order/getArchiveOrder.php"
+    )
+    .then((res) => res.data);
+}
+
+export function getArchiveProduct() {
+  return axios
+    .get(
+      "https://paninara.claudiodressadore.net/evomatic/API/product/getArchiveProductUnfiltered.php"
+    )
+    .then((res) => res.data);
+}
+
+export function getArchiveOffer() {
+  return axios
+    .get(
+      "https://paninara.claudiodressadore.net/evomatic/API/offer/getArchiveOffer.php"
+    )
+    .then((res) => res.data);
+}
+
+export function getProductAllergens(id) {
+  return axios
+    .get(
+      "https://paninara.claudiodressadore.net/evomatic/API/product/getProductAllergens.php/" +
+        id,
       {
-        headers: 
-        {
+        headers: {
           "Access-Control-Allow-Origin": "*",
         },
-      })
-      .then(res=> res.data)
-  }
-
-
-  export function getProductCategory(id){
-    return axios
-    .get("https://paninara.claudiodressadore.net/evomatic/API/product/getProductCategory.php/"+id,
-    {
-      headers: 
+      }
+    )
+    .then((res) => res.data);
+}
+export function getNutritionalValue(id) {
+  return axios
+    .get(
+      "https://paninara.claudiodressadore.net/evomatic/API/product/getNutritionalValue.php/" +
+        id,
       {
-        "Access-Control-Allow-Origin": "*",
-      },
-    })
-    .then(res=> res.data)
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    )
+    .then((res) => res.data);
 }
-  
-export function getProductIngredient(id){
+
+export function getProductCategory(id) {
   return axios
-  .get("https://paninara.claudiodressadore.net/evomatic/API/product/getProductIngredients.php/"+id,
-  {
-    headers: 
-    {
-      "Access-Control-Allow-Origin": "*",
-    },
-  })
-  .then(res=> res.data)
+    .get(
+      "https://paninara.claudiodressadore.net/evomatic/API/product/getProductCategory.php/" +
+        id,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    )
+    .then((res) => res.data);
 }
-export function getProductTag(id){
+
+export function getProductIngredient(id) {
   return axios
-  .get("https://paninara.claudiodressadore.net/evomatic/API/product/getProductTags.php/"+id,
-  {
-    headers: 
-    {
-      "Access-Control-Allow-Origin": "*",
-    },
-  })
-  .then(res=> res.data)
+    .get(
+      "https://paninara.claudiodressadore.net/evomatic/API/product/getProductIngredients.php/" +
+        id,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    )
+    .then((res) => res.data);
 }
-export function DeleteProduct(id,active) {
+export function getProductTag(id) {
+  return axios
+    .get(
+      "https://paninara.claudiodressadore.net/evomatic/API/product/getProductTags.php/" +
+        id,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    )
+    .then((res) => res.data);
+}
+export function DeleteProduct(id, active) {
   return axios
     .post(
       "http://paninara.claudiodressadore.net/evomatic/API/product/changeProductActive.php",
@@ -136,8 +146,7 @@ export function DeleteProduct(id,active) {
     .then((res) => res.data);
 }
 
-
-export function modifyProductCategory(id,category) {
+export function modifyProductCategory(id, category) {
   return axios
     .post(
       "http://paninara.claudiodressadore.net/evomatic/API/product/modifyProductCategory.php",
@@ -154,9 +163,7 @@ export function modifyProductCategory(id,category) {
     .then((res) => res.data);
 }
 
-
-    
-export function modifyProductQuantity(id,quantity) {
+export function modifyProductQuantity(id, quantity) {
   return axios
     .post(
       "http://paninara.claudiodressadore.net/evomatic/API/product/modifyProductQuantity.php",
@@ -172,7 +179,7 @@ export function modifyProductQuantity(id,quantity) {
     )
     .then((res) => res.data);
 }
-export function modifyProductDescription(id,description) {
+export function modifyProductDescription(id, description) {
   return axios
     .post(
       "http://paninara.claudiodressadore.net/evomatic/API/product/modifyProductDescription.php",
@@ -189,7 +196,7 @@ export function modifyProductDescription(id,description) {
     .then((res) => res.data);
 }
 
-export function modifyProductPrice(id,price) {
+export function modifyProductPrice(id, price) {
   return axios
     .post(
       "http://paninara.claudiodressadore.net/evomatic/API/product/modifyProductPrice.php",
@@ -206,7 +213,7 @@ export function modifyProductPrice(id,price) {
     .then((res) => res.data);
 }
 
-export function modifyProductName(id,name) {
+export function modifyProductName(id, name) {
   return axios
     .post(
       "http://paninara.claudiodressadore.net/evomatic/API/product/modifyProductName.php",
@@ -223,42 +230,39 @@ export function modifyProductName(id,name) {
     .then((res) => res.data);
 }
 
-
-
-
-    export function CreateIngredient(name, description, price, quantity) {
-        return axios
-          .post(
-            "http://paninara.claudiodressadore.net/evomatic/API/product/ingredient/createIngredient.php",
-            {
-              name: name,
-              description: description,
-              price: price, 
-              quantity: quantity,
-            },
-            {
-              headers: {
-                "Access-Control-Allow-Origin": "*",
-              },
-            }
-          )
-          .then((res) => res.data);
+export function CreateIngredient(name, description, price, quantity) {
+  return axios
+    .post(
+      "http://paninara.claudiodressadore.net/evomatic/API/product/ingredient/createIngredient.php",
+      {
+        name: name,
+        description: description,
+        price: price,
+        quantity: quantity,
+      },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
       }
+    )
+    .then((res) => res.data);
+}
 
-      export function modifyOfferProduct(id,price,expiry) {
-        return axios
-          .post(
-            "http://paninara.claudiodressadore.net/evomatic/API/offer/modifyOffer.php",
-            {
-              id: id,
-              price: price,
-              expiry: expiry,
-            },
-            {
-              headers: {
-                "Access-Control-Allow-Origin": "*",
-              },
-            }
-          )
-          .then((res) => res.data);
+export function modifyOfferProduct(id, price, expiry) {
+  return axios
+    .post(
+      "http://paninara.claudiodressadore.net/evomatic/API/offer/modifyOffer.php",
+      {
+        id: id,
+        price: price,
+        expiry: expiry,
+      },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
       }
+    )
+    .then((res) => res.data);
+}

@@ -11,17 +11,6 @@ import { useQuery, useMutation } from "@tanstack/react-query";
 
 const options = ["Modifica Prodotto", "Elimina Prodotto"];
 
-
-function GetColorStatus(status){
-  switch(status){
-    case "attivo":
-      return 'blue';
-    case "non attivo":
-      return 'red';
-  }
-  return 'red';
-}
-
 const ProductTable = () => {
   const productQuery = useQuery({
     queryKey: ["products"],
@@ -79,7 +68,7 @@ const ProductTable = () => {
           </tr>
         </thead>
         <tbody>
-        { productQuery.data?.map( product=>(
+        {productQuery.data?.map( product=>(
             <tr key={product.id} {...idprodotti[cnt]=product.id}{...productname[cnt]=product.name}{...cnt++}>
               <td> {product.name}</td>
               <td>{product.price} </td>
@@ -96,7 +85,6 @@ const ProductTable = () => {
             selectedValue={selectedValue}
             open={open}
             onClose={handleClose}
-            id={productid}
             name={productname}
           />
     </div>
