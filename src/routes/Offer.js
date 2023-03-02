@@ -6,14 +6,17 @@ function Offer(){
     return (
         <>
             <div className="home" >
+                <div style={{ display: 'flex', justifyContent: 'space-between'}}>
                 <div>
                     <h1>Offer</h1>
                 </div>
                 <span></span>
                 <NavLink to="/newoffer">
-                <div className="addProduct"><h2 style={{ color: "#000"}}> Add Offer </h2> 
+                <div className="submit-side">
+                <button style={{ width: '250px'}}>Aggiungi Offerta</button> 
                 </div>
                 </NavLink>
+                </div>
                 <div className="offer-list">
                     <div>
                         <OfferTable /> 

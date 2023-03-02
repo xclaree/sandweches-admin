@@ -46,6 +46,39 @@ export function getArchiveOrder() {
     .then((res) => res.data);
 }
 
+export function deleteOrder(id) {
+  return axios
+  .get(
+    "https://paninara.claudiodressadore.net/evomatic/API/order/deleteOrder.php/" + id
+  )
+  .then((res) => res.data);
+}
+
+export function getOrder(id) {
+  return axios 
+  .get(
+    "https://paninara.claudiodressadore.net/evomatic/API/order/getOrder.php/" + id
+  )
+  .then((res) => res.data);
+}
+
+export function setStatusReadyOrder(id, status) {
+  return axios 
+  .post(
+    "https://paninara.claudiodressadore.net/evomatic/API/order/setStatusOrder.php",
+    {
+      id: id,
+      status: status
+    },
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    }
+  )
+  .then((res) => res.data);
+}
+
 export function getArchiveProduct() {
   return axios
     .get(
