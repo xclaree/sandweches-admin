@@ -11,6 +11,8 @@ import TermsConditions from "./routes/TermsConditions";
 import ResetPassword from "./routes/ResetPassword";
 import ProductDetails from"./routes/ProductDetails";
 import { BrowserRouter, Routes, Route, createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import NewIngredient from "./routes/NewIngredient";
+import NewOffer from "./routes/NewOffer";
 import "./App.css";
 import Login from "./routes/Login";
 import {
@@ -19,6 +21,10 @@ import {
 } from "@tanstack/react-query";
 import { useState } from "react";
 import useToken from "./data/token";
+
+
+
+
 
 function App() {
   const { token, setToken } = useToken();
@@ -48,6 +54,9 @@ function App() {
               <Route path="/profile" element={<Profile setToken={setToken}/>}/>
               <Route path="/newproduct" element={<NewProduct />} />
               <Route path="/termsconditions" element={<TermsConditions />} />
+              <Route path="/newingredient"   element={<NewIngredient/>}/>
+              <Route path="/newoffer"   element={<NewOffer/>}/>
+
             </Routes>
       </BrowserRouter>
     </>
@@ -66,68 +75,3 @@ createRoot(document.getElementById("root")).render(
   </React.StrictMode>
 );
 
-
-
-
-
-// import "./App.css";
-
-
-// const AppLayout = () => (
-//   <>
-//     <Outlet />
-//     <NavBar />
-//   </>
-// );
-
-// const queryClient = new QueryClient();
-
-// const router = createBrowserRouter([ 
-//   {
-//     element: <AppLayout />,
-//     children: [
-//       {
-//         path: "/",
-//         element: <Home />,
-//       },
-//       {
-//         path: "product",
-//         element: <Product />,
-//       },
-//       {
-//         path: "ingredient",
-//         element: <Ingredient />,
-//       },
-//       {
-//         path: "offer",
-//         element: <Offer />,
-//       },
-//       {
-//         path: "profile",
-//         element: <Profile />,
-//       },
-//       {
-//         path: "newproduct",
-//         element: <NewProduct />
-//       },
-//       {
-//         path: "termsconditions",
-//         element: <TermsConditions />
-//       },
-//       {
-//         path: "resetpassword",
-//         element: <ResetPassword />
-//       },
-//       {
-//         path: "Dettagli Prodotto",
-//         element: <ProductDetails />
-//       }
-//     ],
-//   },
-// ]);
-
-// createRoot(document.getElementById("root")).render(
-//   <QueryClientProvider client={queryClient}>
-//     <RouterProvider router={router} />
-//   </QueryClientProvider>
-// );

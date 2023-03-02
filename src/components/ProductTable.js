@@ -32,20 +32,9 @@ const ProductTable = () => {
   }) 
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(options[1]);
-  const [selectId, setSelectId] = useState();
 
-  let scelta=[];
-  
-  const handleClickOpen = (value) => {
-    scelta=value;
-    console.log(`Ã¨ stato schiacciato la row con index ${scelta}`);
-    handleChangeSelectId(scelta);
+  const handleClickOpen = () => {
     setOpen(true);
-
-  };
-
-  const handleChangeSelectId = (value) =>{
-    setSelectId(value);
   };
 
   const handleClose = (value) => {
@@ -95,10 +84,8 @@ const ProductTable = () => {
               <td> {product.name}</td>
               <td>{product.price} </td>
               <td>
-                <IconButton onClick={()=>{
-                  handleClickOpen(product.id);
-                }}>
-                  <MoreVertIcon/>
+                <IconButton onClick={handleClickOpen}>
+                  <MoreVertIcon />
                 </IconButton>
               </td>
             </tr>
@@ -109,12 +96,11 @@ const ProductTable = () => {
             selectedValue={selectedValue}
             open={open}
             onClose={handleClose}
-            selected_id={selectId}
-            {...console.log(`la scelta corrisponde a ${selectId}`)}
+            id={productid}
+            name={productname}
           />
     </div>
   );
 };
 
 export default ProductTable;
-//{...scelta=productname[cnt--]}

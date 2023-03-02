@@ -1,68 +1,69 @@
 import React from "react";
-import "../App.css";
-import NewPasswordPopup from "../components/NewPasswordPopup";
-import { Link, NavLink } from "react-router-dom";
-import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
+import '../App.css';
+import Order from "../components/OrderTable";
+import NewPasswordPopup from"../components/NewPasswordPopup";
+import { Link, NavLink } from 'react-router-dom';
 
-const queryClient = new QueryClient();
+function Profile(){
 
-function Profile({setToken}) {
-
-  const handleLogout = () => {
-    setToken(false);
-    localStorage.clear();
+const handleLogout = () => {
     window.location.reload();
   };
 
-  return (
-    <QueryClientProvider client={queryClient}>
-    <div className="home">
-      <h1>Profilo</h1>
-      <form>
-        <div className="form-container">
-          <div style={{ display: "flex" }}>
-            <label style={{ pointerEvents: 'none'}}>
-              Nome e Cognome:
-              <input
-                style={{ width: "300px" }}
-                type="text"
-                value={localStorage.getItem('name') + ' ' + localStorage.getItem('surname')}
-              />
-            </label>
+
+    return(
+        <div className="home">
+            <h1>Profile</h1>
+            <div>
+                <label className="username_label">
+                    Nome Cognome
+                </label>
+            </div>
+            <div>
+                <label className="username_info_label">
+                   Admin Amdin
+                </label>
+            </div>
+            <div>
+                <label className="email_label">
+                    Email    
+                </label>
+            </div>
+            <div>
+                <label className="email_info_label">
+                adminadmin@iisviolamarchesini.edu.it
+                </label>
+            </div>
+            <div>
+                <label className="password_label">
+                    Password
+                </label>
+            </div>
+            <div>
+              <input type="password" size="40" maxlength="200" className="input_password_user" />
+            </div>
             <span></span>
-            <label>
-              Prezzo:
-              <input
-                type="number"
-                step="0.01"
-                style={{ width: "150px" }}
-              />
-            </label>
+            <div className="submit-side">
+                <NavLink to="/termsconditions">
+                <button style={{ width: '280px'}}> Termini e condizioni</button>
+                </NavLink>
+            </div>
             <span></span>
-          </div>
-          <span></span>
-          <div className="submit-side">
-            <NavLink to="/termsconditions">
-              <button style={{ width: "280px" }}> Termini e condizioni</button>
-            </NavLink>
-          </div>
-          <span></span>
-          <div className="submit-side" onClick={NewPasswordPopup}>
-            <button style={{ width: "280px" }}>Modifica Password</button>
-          </div>
-          <span></span>
-          <div className="submit-side" onClick={handleLogout}>
-                <NavLink to="/">
+            <div className="submit-side" onClick={NewPasswordPopup}>
+                <button style={{ width: '280px'}}>
+                Modifica Password
+                </button>
+            </div>
+            <span></span>
+            {/* <div className="submit-side" onClick={handleLogout}>
+                <NavLink to="/login">
                 <button style={{ width: '280px'}}>
                 Esci dall'account
                 </button>
                 </NavLink>
             </div>
         </div>
-      </form>
-    </div>
-    </QueryClientProvider>
-  );
+    )
 }
 
 export default Profile;

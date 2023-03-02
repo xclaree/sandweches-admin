@@ -6,7 +6,7 @@ import { useQuery, useMutation } from "@tanstack/react-query";
 import { getIngredient } from "../api/prova";
 import { createProduct } from "../api/prova";
 
-const categories = ["Panini", "Piadine", "Bevande"]; //API QUI
+const categories = ["Panino", "Piadina", "Bibita","Snack","Dolce"]; //API QUI
 
 const ingredients = [
   //API QUI
